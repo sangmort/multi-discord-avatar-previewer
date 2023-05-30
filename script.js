@@ -3,11 +3,12 @@ function getUserAvatars() {
     const avatarPreviewLight = document.getElementById("avatar-preview-light");
     const avatarPreviewDark = document.getElementById("avatar-preview-dark");
 
+    userAvatarInput.addEventListener("change", handleAvatarChange);
+
     function handleAvatarChange() {
         const userAvatarFiles = userAvatarInput.files;
         if (!userAvatarFiles) return;
 
-        // Get all the placeholders for each theme
         const placeholdersLight = document.querySelectorAll(
             ".avatar.placeholder"
         );
@@ -15,39 +16,43 @@ function getUserAvatars() {
             ".theme-container.dark-theme .avatar.placeholder"
         );
 
-        for (let i = 0; i < userAvatarFiles.length; i++) {
-            const file = userAvatarFiles[i];
+        Array.from(userAvatarFiles).forEach((file, i) => {
             const reader = new FileReader();
             reader.addEventListener("load", () => {
                 const avatarPreview = createAvatarPreview(file, reader.result);
-                avatarPreviewLight.appendChild(avatarPreview.cloneNode(true));
-                avatarPreviewDark.appendChild(avatarPreview.cloneNode(true));
+                appendAvatarPreview(avatarPreview, avatarPreviewLight);
+                appendAvatarPreview(avatarPreview, avatarPreviewDark);
 
-                // Remove the corresponding placeholders
-                if (placeholdersLight[i]) {
-                    placeholdersLight[i].remove();
-                }
-                if (placeholdersDark[i]) {
-                    placeholdersDark[i].remove();
-                }
+                removePlaceholder(placeholdersLight[i]);
+                removePlaceholder(placeholdersDark[i]);
             });
             reader.readAsDataURL(file);
-        }
+        });
     }
 
     function createAvatarPreview(file, imageUrl) {
         const avatarPreview = document.createElement("div");
         avatarPreview.classList.add("avatar");
         avatarPreview.style.backgroundImage = `url(${imageUrl})`;
-
-        if (!file) {
-            avatarPreview.classList.add("placeholder");
-        }
+        avatarPreview.classList.toggle("placeholder", !file);
 
         return avatarPreview;
     }
 
-    userAvatarInput.addEventListener("change", handleAvatarChange);
+    function appendAvatarPreview(avatarPreview, container) {
+        const clonedPreview = cloneAvatarPreview(avatarPreview);
+        container.appendChild(clonedPreview);
+    }
+
+    function cloneAvatarPreview(avatarPreview) {
+        return avatarPreview.cloneNode(true);
+    }
+
+    function removePlaceholder(placeholder) {
+        if (placeholder) {
+            placeholder.remove();
+        }
+    }
 }
 
 document.addEventListener("DOMContentLoaded", getUserAvatars);
