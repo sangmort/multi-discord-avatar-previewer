@@ -90,6 +90,7 @@ main {
     padding: 2rem;
 }
 
+
 #avatar-preview-light {
     background-color: var(--avatar-bg-color-lt);
     border: 1px solid var(--avatar-border-color-lt);
@@ -101,7 +102,7 @@ main {
 }
 
 .avatar {
-    margin: 5px;
+    margin: 3px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -111,6 +112,7 @@ main {
 }
 
 .placeholder {
+    background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
     background-color: rgb(74, 76, 87);
-    border: 1px dashed #999;
+    border: none;
 }
