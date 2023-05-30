@@ -55,4 +55,19 @@ function generateAvatarPreview() {
     }
 }
 
+function removeAvatarPreviews() {
+    const avatarPreviews = document.querySelectorAll(".avatar");
+    avatarPreviews.forEach((preview) => {
+        preview.remove();
+    });
+
+    const placeholderAvatars = document.querySelectorAll(".avatar.placeholder");
+    placeholderAvatars.forEach((placeholder) => {
+        placeholder.style.display = "block";
+    });
+}
+
 document.addEventListener("DOMContentLoaded", generateAvatarPreview);
+document
+    .getElementById("remove-previews-button")
+    .addEventListener("click", removeAvatarPreviews);
