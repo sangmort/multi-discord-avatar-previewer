@@ -56,6 +56,11 @@ main {
     min-width: 300px;
 }
 
+.avatar-uploader {
+    display: flex;
+    justify-content: center;
+}
+
 .avatar-container {
     display: flex;
     flex-wrap: wrap;
@@ -79,7 +84,7 @@ main {
     background-position: 50% 50%;
 }
 
-.avatar.placeholder {
+.placeholder {
     background-color: rgb(74, 76, 87);
     border: 1px dashed #999;
 }
