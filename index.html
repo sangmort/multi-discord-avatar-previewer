@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Multi Discord Avatar Previewer</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <main>
-            <h1>Multiple Discord Avatar Previewer</h1>
-            <div class="avatar-selector">
-                <input type="file" id="user-avatar-input" multiple />
-            </div>
 
-            <div id="preview" class="preview">
-                <div id="avatar-previews" class="avatar-container">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi Discord Avatar Previewer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Multiple Discord Avatar Previewer</h1>
+        <div class="avatar-selector">
+            <input type="file" id="avatar-selector-input" multiple />
+        </div>
+
+        <div id="preview" class="preview">
+            <div class="theme-container light-theme">
+                <h2>Light Theme</h2>
+                <div id="avatar-previews-light" class="avatar-container">
                     <div class="avatar placeholder"></div>
                     <div class="avatar placeholder"></div>
                     <div class="avatar placeholder"></div>
@@ -29,6 +33,25 @@
                     <div class="avatar placeholder"></div>
                 </div>
             </div>
-        </main>
-    </body>
+
+            <div class="theme-container dark-theme">
+                <h2>Dark Theme</h2>
+                <div id="avatar-previews-dark" class="avatar-container">
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                    <div class="avatar placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
 </html>
