@@ -55,7 +55,7 @@ function generateAvatarPreview() {
     }
 }
 
-function removeAvatarPreviews() {
+function removeAvatarPreview() {
     const avatarPreviews = document.querySelectorAll(".avatar");
     avatarPreviews.forEach((preview) => {
         preview.remove();
@@ -70,4 +70,4 @@ function removeAvatarPreviews() {
 document.addEventListener("DOMContentLoaded", generateAvatarPreview);
 document
     .getElementById("remove-previews-button")
-    .addEventListener("click", removeAvatarPreviews);
+    .addEventListener("click", removeAvatarPreview);
