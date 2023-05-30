@@ -1,4 +1,4 @@
-function getUserAvatars() {
+function generateAvatarPreview() {
     const userAvatarInput = document.getElementById("user-avatar-input");
     const avatarPreviewLight = document.getElementById("avatar-preview-light");
     const avatarPreviewDark = document.getElementById("avatar-preview-dark");
@@ -55,4 +55,4 @@ function getUserAvatars() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", getUserAvatars);
+document.addEventListener("DOMContentLoaded", generateAvatarPreview);
