@@ -1,37 +1,57 @@
 :root {
---border-width: 1px;
---border-color-dk: hsla(0,0%,100%,0.08);
---background-color: hsla(229, 12%, 19%, 1);
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
+    --border-width: 1px;
+    --border-color-dk: hsla(0, 0%, 100%, 0.08);
+    --background-color: hsla(229, 12%, 19%, 1);
 }
 
 html {
-    font: normal 62.5%/1.4;
-    font-family: sans-serif, "fira code";
-    text-align: center;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 body {
+    font-family: sans-serif, "fira code";
+    text-align: center;
     font-size: 16px;
-    margin: 0;
-    padding: 0;
     background-color: #f8f8f8;
     color: #222;
+    padding: 3rem;
 }
 
 h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 
 main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     min-width: 300px;
 }
@@ -42,7 +62,7 @@ main {
     justify-content: center;
     align-items: stretch;
     border: 1px solid var(--border-color-dk);
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     width: 300px;
     margin-top: 2rem;
     padding: 2rem;
