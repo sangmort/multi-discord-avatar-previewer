@@ -56,6 +56,12 @@ function generateAvatarPreview() {
 }
 
 function removeAvatarPreview() {
+    const userAvatarInput = document.getElementById("user-avatar-input");
+    if (userAvatarInput.files.length < 1) {
+        alert("No files uploaded");
+        return;
+    }
+
     const avatarPreviews = document.querySelectorAll(".avatar");
     avatarPreviews.forEach((preview) => {
         preview.remove();
@@ -68,6 +74,4 @@ function removeAvatarPreview() {
 }
 
 document.addEventListener("DOMContentLoaded", generateAvatarPreview);
-document
-    .getElementById("remove-previews-button")
-    .addEventListener("click", removeAvatarPreview);
+document.getElementById("remove-previews-button").addEventListener("click", removeAvatarPreview);
