@@ -1,6 +1,6 @@
 function getUserAvatars() {
     const input = document.getElementById("avatar-selector-input");
-    const avatarPreview = document.getElementById("avatar-pr");
+    const avatarPreview = document.getElementById("avatar-preview");
 
     function handleAvatarChange() {
         const userAvatarFiles = input.files[0];
