@@ -9,15 +9,27 @@
         <script src="script.js"></script>
     </head>
     <body>
-        <main>
-            <h1>Multiple Discord Avatar Previewer</h1>
-            <div class="avatar-selector columns">
-                <input type="file" id="avatar-selector-input" />
-            </div>
+<main>
+  <h1>Multiple Discord Avatar Previewer</h1>
+  <div class="avatar-selector columns">
+    <input type="file" id="avatar-selector-input" multiple />
+  </div>
 
-            <div id="preview" class="preview">
-                <div id="avatar-preview" class="avatar placeholder"></div>
-            </div>
-        </main>
+  <div id="preview" class="preview">
+    <div id="avatar-previews" class="avatar-container">
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+      <div class="avatar placeholder"></div>
+    </div>
+  </div>
+</main>
+
     </body>
 </html>
