@@ -83,7 +83,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     border-radius: 0.25rem;
     width: 300px;
     margin-top: .5rem;
@@ -102,8 +102,7 @@ main {
 }
 
 .avatar {
-    margin: 3px;
-    padding: 5px;
+    margin: 5px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
