@@ -20,8 +20,8 @@ function getUserAvatars() {
             const reader = new FileReader();
             reader.addEventListener("load", () => {
                 const avatarPreview = createAvatarPreview(file, reader.result);
-                appendAvatarPreview(avatarPreview, avatarPreviewLight);
-                appendAvatarPreview(avatarPreview, avatarPreviewDark);
+                prependAvatarPreview(avatarPreview, avatarPreviewLight);
+                prependAvatarPreview(avatarPreview, avatarPreviewDark);
 
                 removePlaceholder(placeholdersLight[i]);
                 removePlaceholder(placeholdersDark[i]);
@@ -39,9 +39,9 @@ function getUserAvatars() {
         return avatarPreview;
     }
 
-    function appendAvatarPreview(avatarPreview, container) {
+    function prependAvatarPreview(avatarPreview, container) {
         const clonedPreview = cloneAvatarPreview(avatarPreview);
-        container.appendChild(clonedPreview);
+        container.insertBefore(clonedPreview, container.firstChild);
     }
 
     function cloneAvatarPreview(avatarPreview) {
