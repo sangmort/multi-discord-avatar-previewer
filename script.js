@@ -1,17 +1,17 @@
 function getUserAvatars() {
     const input = document.getElementById("avatar-selector-input");
-    const avatarPreview = document.getElementById("avatar-target");
+    const avatarPreview = document.getElementById("avatar-pr");
 
     function handleAvatarChange() {
-        const userAvatarFile = input.files[0];
-        if (!userAvatarFile) return;
+        const userAvatarFiles = input.files[0];
+        if (!userAvatarFiles) return;
 
         const reader = new FileReader();
         reader.addEventListener("load", () => {
             avatarPreview.classList.remove("placeholder");
             avatarPreview.style.backgroundImage = `url(${reader.result})`;
         });
-        reader.readAsDataURL(userAvatarFile);
+        reader.readAsDataURL(userAvatarFiles);
     }
 
     input.addEventListener("change", handleAvatarChange);
