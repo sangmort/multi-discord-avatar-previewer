@@ -16,7 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
             ".theme-container.dark-theme .avatar.placeholder"
         );
 
-        Array.from(userAvatarFiles).forEach((file, i) => {
+        const maxFiles = 10;
+        const filesToProcess = Array.from(userAvatarFiles).slice(0, maxFiles);
+
+        if (userAvatarFiles.length > maxFiles) {
+            return alert("You can only upload a maximum of " + maxFiles + " files.");
+        }
+
+        else {
+
+        filesToProcess.forEach((file, i) => {
             const reader = new FileReader();
             reader.addEventListener("load", () => {
                 const avatarPreview = createAvatarPreview(file, reader.result);
@@ -28,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             reader.readAsDataURL(file);
         });
+    };
     }
 
     function createAvatarPreview(file, imageUrl) {
