@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="Content-Security-Policy" content="
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' https://cdn.example.com;
         style-src 'self' 'unsafe-inline';
@@ -15,68 +16,67 @@
         base-uri 'self';
         form-action 'self';
         ">
-        <title>Multi Discord Avatar Previewer</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
-            rel="stylesheet" />
-        <script src="script.js"></script>
-    </head>
+    <title>Multi Discord Avatar Previewer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+        rel="stylesheet" />
+    <script src="script.js"></script>
+</head>
 
-    <body>
-        <main>
-            <header>
-                <h1>
-                    Multiple Discord <br />
-                    Avatar Previewer
-                </h1>
-            </header>
+<body>
+    <main>
+        <header>
+            <h1>
+                Multiple Discord <br />
+                Avatar Previewer
+            </h1>
+        </header>
 
-            <section class="avatar-uploader">
-                <form>
-                    <label for="user-avatar-input">Choose Avatars:</label>
-                    <input
-                        type="file"
-                        id="user-avatar-input"
-                        accept=".jpg, .jpeg, .png, .gif"
-                        multiple />
-                    <button id="remove-previews-button">Reset</button>
-                </form>
-            </section>
+        <section class="avatar-uploader">
+            <form>
+                <label for="user-avatar-input">Choose Avatars:</label>
+                <input type="file" id="user-avatar-input"
+                    accept=".jpg, .jpeg, .png, .gif" multiple />
+                <button id="remove-previews-button">Reset</button>
+            </form>
+            <div id="alert-message">Upload up to 10 images to preview as discord
+                avatars.</div>
+        </section>
 
-            <section class="theme-container light-theme">
-                <h2>Light Theme</h2>
-                <div id="avatar-preview-light" class="avatar-container">
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                </div>
-            </section>
+        <section class="theme-container light-theme">
+            <h2>Light Theme</h2>
+            <div id="avatar-preview-light" class="avatar-container">
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+            </div>
+        </section>
 
-            <section class="theme-container dark-theme">
-                <h2>Dark Theme</h2>
-                <div id="avatar-preview-dark" class="avatar-container">
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                    <div class="avatar placeholder"></div>
-                </div>
-            </section>
-        </main>
-    </body>
+        <section class="theme-container dark-theme">
+            <h2>Dark Theme</h2>
+            <div id="avatar-preview-dark" class="avatar-container">
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+                <div class="avatar placeholder"></div>
+            </div>
+        </section>
+    </main>
+</body>
+
 </html>
