@@ -16,17 +16,20 @@
 
 <body>
     <main>
-        <h1>Multiple Discord <br> Avatar Previewer</h1>
-        <div class="avatar-uploader">
+        <header>
+            <h1>Multiple Discord <br> Avatar Previewer</h1>
+        </header>
+
+        <section class="avatar-uploader">
             <form>
+                <label for="user-avatar-input">Choose Avatars:</label>
                 <input type="file" id="user-avatar-input"
-                    accept=".jpg, .jpeg, .png, .gif" multiple />
-                <button id="remove-previews-button">Clear All</button>
+                    accept=".jpg, .jpeg, .png, .gif" multiple>
+                <button id="remove-previews-button">Reset</button>
             </form>
-        </div>
+        </section>
 
-
-        <div class="theme-container light-theme">
+        <section class="theme-container light-theme">
             <h2>Light Theme</h2>
             <div id="avatar-preview-light" class="avatar-container">
                 <div class="avatar placeholder"></div>
@@ -40,9 +43,9 @@
                 <div class="avatar placeholder"></div>
                 <div class="avatar placeholder"></div>
             </div>
-        </div>
+        </section>
 
-        <div class="theme-container dark-theme">
+        <section class="theme-container dark-theme">
             <h2>Dark Theme</h2>
             <div id="avatar-preview-dark" class="avatar-container">
                 <div class="avatar placeholder"></div>
@@ -56,9 +59,9 @@
                 <div class="avatar placeholder"></div>
                 <div class="avatar placeholder"></div>
             </div>
-        </div>
-
+        </section>
     </main>
+
 
 </body>
 
