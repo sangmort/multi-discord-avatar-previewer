@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 html {
     box-sizing: border-box;
     font-size: 16px;
@@ -30,18 +32,17 @@ img {
 
 :root {
     --border-width: 1px;
-    --avatar-border-color-lt: hsla(182, 100%, 72%, 0.829);
-    --avatar-border-color-dk: hsla(0, 100%, 24%, 0.847);
-    --avatar-bg-color-lt: hsl(226, 35%, 85%);
-    --avatar-bg-color-dk: hsl(229, 12%, 19%);
+    --avatar-border-color-lt: hsl(234, 4%, 45%);
+    --avatar-border-color-dk: hsl(231, 5%, 53%);
+    --avatar-bg-color-lt: hsl(0, 0%, 100%);
+    --avatar-bg-color-dk: hsl(222, 6%, 20%);
 }
 
 body {
-    font-family: sans-serif, "fira code";
+    font-family: 'Nunito', sans-serif;
     text-align: center;
-    font-size: 16px;
-    background-color: #f8f8f8;
-    color: #222;
+    background-color: hsl(180, 5%, 16%);
+    color: hsl(30, 3%, 77%);
     padding: 2rem;
 }
 
@@ -87,19 +88,18 @@ main {
     align-items: center;
     border-radius: 0.25rem;
     width: 300px;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     padding: 2rem;
 }
 
-
 #avatar-preview-light {
     background-color: var(--avatar-bg-color-lt);
-    border: 1px solid var(--avatar-border-color-lt);
+    border: var(--border-width) solid var(--avatar-border-color-lt);
 }
 
 #avatar-preview-dark {
     background-color: var(--avatar-bg-color-dk);
-    border: 1px solid var(--avatar-border-color-dk);
+    border: var(--border-width) solid var(--avatar-border-color-dk);
 }
 
 .avatar {
@@ -114,6 +114,6 @@ main {
 
 .placeholder {
     background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
-    background-color: rgb(74, 76, 87);
+    background-color: var(--avatar-border-color-dk);
     border: none;
 }
