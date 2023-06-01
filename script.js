@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let avatarPreviewsCount = 0;
     userAvatarInput.addEventListener("change", handleAvatarChange);
 
+    // Handle the change when a user selects avatar files
     function handleAvatarChange() {
         const selectedFiles = Array.from(userAvatarInput.files).slice(0, maxFiles - avatarPreviewsCount);
         if (selectedFiles.length === 0) return;
@@ -14,13 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
             clearFileInput();
             return;
         }
+
+        // Process each file and create avatar previews
         selectedFiles.forEach((file, i) => {
             if (avatarPreviewsCount >= maxFiles) return;
             const reader = new FileReader();
             reader.addEventListener("load", () => {
                 const avatarPreview = createAvatarPreview(file, reader.result);
-                prependAvatarPreview(avatarPreview, avatarPreviewLight);
-                prependAvatarPreview(avatarPreview, avatarPreviewDark);
+                insertAvatarPreview(avatarPreview, avatarPreviewLight);
+                insertAvatarPreview(avatarPreview, avatarPreviewDark);
                 removePlaceholder(i);
                 avatarPreviewsCount++;
             });
@@ -31,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+        // Create an avatar preview for a file and image URL
     function createAvatarPreview(file, imageUrl) {
         const avatarPreview = document.createElement("div");
         avatarPreview.classList.add("avatar");
@@ -39,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return avatarPreview;
     }
 
-    function prependAvatarPreview(avatarPreview, container) {
+    function insertAvatarPreview(avatarPreview, container) {
         const clonedPreview = avatarPreview.cloneNode(true);
         container.insertBefore(clonedPreview, container.firstChild);
     }
