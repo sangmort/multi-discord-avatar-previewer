@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     userAvatarInput.addEventListener("change", handleAvatarChange);
 
     function handleAvatarChange() {
-        const userAvatarFiles = Array.from(userAvatarInput.files).slice(0, maxFiles - avatarPreviewsCount);
-        if (userAvatarFiles.length === 0) return;
-        if (userAvatarFiles.length > maxFiles) {
+        const selectedFiles = Array.from(userAvatarInput.files).slice(0, maxFiles - avatarPreviewsCount);
+        if (selectedFiles.length === 0) return;
+        if (selectedFiles.length > maxFiles) {
             showAlert("You can only upload a maximum of " + maxFiles + " files.");
             clearFileInput();
             return;
         }
-        userAvatarFiles.forEach((file, i) => {
+        selectedFiles.forEach((file, i) => {
             if (avatarPreviewsCount >= maxFiles) return;
             const reader = new FileReader();
             reader.addEventListener("load", () => {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             reader.readAsDataURL(file);
         });
-        if (avatarPreviewsCount + userAvatarFiles.length >= maxFiles) {
+        if (avatarPreviewsCount + selectedFiles.length >= maxFiles) {
             disableFileInput();
         }
     }
