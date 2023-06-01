@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 html {
     box-sizing: border-box;
@@ -39,7 +39,7 @@ img {
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     text-align: center;
     background-color: hsl(180, 5%, 16%);
     color: hsl(30, 3%, 77%);
@@ -80,7 +80,6 @@ main {
     justify-content: center;
 }
 
-
 .avatar-container {
     display: flex;
     flex-wrap: wrap;
@@ -116,4 +115,9 @@ main {
     background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
     background-color: var(--avatar-border-color-dk);
     border: none;
+}
+
+#alert-container {
+    display: block;
+    position: relative;
 }

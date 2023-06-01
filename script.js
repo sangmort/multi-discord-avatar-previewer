@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         userAvatarInput.value = "";
     }
 
-    // Show an alert message until dismissed by the user
+    // Show alert message until closed by user
     function showAlert(message) {
         const alertContainer = document.getElementById("alert-container");
         const alertMessage = document.getElementById("alert-message");
@@ -88,6 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    window.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission and page refresh
+        });
+    });
 
     // Remove all avatar previews and reset input state
     function removeAvatarPreview() {
