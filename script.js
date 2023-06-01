@@ -50,11 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Remove avatar placeholder for both light and dark themes
-    function removePlaceholder(index) {
+
+    function removePlaceholder() {
         const placeholdersLight = document.querySelectorAll(".avatar.placeholder");
         const placeholdersDark = document.querySelectorAll(".theme-container.dark-theme .avatar.placeholder");
-        removeElement(placeholdersLight[index]);
-        removeElement(placeholdersDark[index]);
+
+        placeholdersLight.forEach((placeholder) => {
+            removeElement(placeholder);
+        });
+
+        placeholdersDark.forEach((placeholder) => {
+            removeElement(placeholder);
+        });
     }
 
     // Remove element from the DOM
