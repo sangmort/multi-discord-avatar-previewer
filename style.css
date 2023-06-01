@@ -80,15 +80,15 @@ main {
     justify-content: center;
 }
 
+
 .avatar-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-radius: 0.25rem;
-    width: 300px;
-    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    margin-top: 0.35rem;
     padding: 2rem;
 }
 
