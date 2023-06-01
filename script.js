@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-        // Create an avatar preview for a file and image URL
+    // Create an avatar preview for a file and image URL
     function createAvatarPreview(file, imageUrl) {
         const avatarPreview = document.createElement("div");
         avatarPreview.classList.add("avatar");
@@ -43,11 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return avatarPreview;
     }
 
+    // Insert an avatar preview into the theme-container
     function insertAvatarPreview(avatarPreview, container) {
         const clonedPreview = avatarPreview.cloneNode(true);
         container.insertBefore(clonedPreview, container.firstChild);
     }
 
+    // Remove avatar placeholder for both light and dark themes
     function removePlaceholder(index) {
         const placeholdersLight = document.querySelectorAll(".avatar.placeholder");
         const placeholdersDark = document.querySelectorAll(".theme-container.dark-theme .avatar.placeholder");
@@ -55,24 +57,29 @@ document.addEventListener("DOMContentLoaded", function () {
         removeElement(placeholdersDark[index]);
     }
 
+    // Remove element from the DOM
     function removeElement(element) {
         if (element) {
             element.remove();
         }
     }
 
+    // Disable user-avatar-input
     function disableFileInput() {
         userAvatarInput.disabled = true;
     }
 
+    // Disable user-avatar-input
     function clearFileInput() {
         userAvatarInput.value = "";
     }
 
+    // Show an alert message
     function showAlert(message) {
         alert(message);
     }
 
+    // Remove all avatar previews and reset input state
     function removeAvatarPreview() {
         if (userAvatarInput.files.length < 1) {
             showAlert("No files uploaded");
