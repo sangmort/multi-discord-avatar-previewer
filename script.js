@@ -74,10 +74,20 @@ document.addEventListener("DOMContentLoaded", function () {
         userAvatarInput.value = "";
     }
 
-    // Show an alert message
+    // Show an alert message until dismissed by the user
     function showAlert(message) {
-        alert(message);
+        const alertContainer = document.getElementById("alert-container");
+        const alertMessage = document.getElementById("alert-message");
+        const closeButton = document.getElementById("alert-close");
+
+        alertMessage.innerHTML = message;
+        alertContainer.style.display = "block";
+
+        closeButton.addEventListener("click", function () {
+            alertContainer.style.display = "none";
+        });
     }
+
 
     // Remove all avatar previews and reset input state
     function removeAvatarPreview() {
