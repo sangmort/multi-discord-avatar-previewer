@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function handleAvatarChange() {
         const userAvatarFiles = userAvatarInput.files;
-        if (!userAvatarFiles) return;
+        const maxFiles = 10;
+        const filesToProcess = Array.from(userAvatarFiles).slice(0, maxFiles);
 
         const placeholdersLight = document.querySelectorAll(
             ".avatar.placeholder"
@@ -16,28 +17,29 @@ document.addEventListener("DOMContentLoaded", function () {
             ".theme-container.dark-theme .avatar.placeholder"
         );
 
-        const maxFiles = 10;
-        const filesToProcess = Array.from(userAvatarFiles).slice(0, maxFiles);
+        if (!userAvatarFiles) return;
 
         if (userAvatarFiles.length > maxFiles) {
-            return alert("You can only upload a maximum of " + maxFiles + " files.");
-        }
+            return alert(
+                "You can only upload a maximum of " + maxFiles + " files."
+            );
+        } else {
+            filesToProcess.forEach((file, i) => {
+                const reader = new FileReader();
+                reader.addEventListener("load", () => {
+                    const avatarPreview = createAvatarPreview(
+                        file,
+                        reader.result
+                    );
+                    prependAvatarPreview(avatarPreview, avatarPreviewLight);
+                    prependAvatarPreview(avatarPreview, avatarPreviewDark);
 
-        else {
-
-        filesToProcess.forEach((file, i) => {
-            const reader = new FileReader();
-            reader.addEventListener("load", () => {
-                const avatarPreview = createAvatarPreview(file, reader.result);
-                prependAvatarPreview(avatarPreview, avatarPreviewLight);
-                prependAvatarPreview(avatarPreview, avatarPreviewDark);
-
-                removePlaceholder(placeholdersLight[i]);
-                removePlaceholder(placeholdersDark[i]);
+                    removePlaceholder(placeholdersLight[i]);
+                    removePlaceholder(placeholdersDark[i]);
+                });
+                reader.readAsDataURL(file);
             });
-            reader.readAsDataURL(file);
-        });
-    };
+        }
     }
 
     function createAvatarPreview(file, imageUrl) {
