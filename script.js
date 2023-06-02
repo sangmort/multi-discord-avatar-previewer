@@ -56,19 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const placeholdersDark = document.querySelectorAll(".theme-container.dark-theme .avatar.placeholder");
 
         placeholdersLight.forEach((placeholder) => {
-            removeElement(placeholder);
+            placeholder.remove();
         });
 
         placeholdersDark.forEach((placeholder) => {
-            removeElement(placeholder);
+            placeholder.remove();
         });
-    }
-
-    // Remove element from the DOM
-    function removeElement(element) {
-        if (element) {
-            element.remove();
-        }
     }
 
     // Disable user-avatar-input
