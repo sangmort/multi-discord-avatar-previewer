@@ -6,35 +6,37 @@ document.addEventListener("DOMContentLoaded", function () {
     let avatarPreviewsCount = 0;
     userAvatarInput.addEventListener("change", handleAvatarChange);
 
-    // Handle the change when a user selects avatar files
     function handleAvatarChange() {
-        const selectedFiles = Array.from(userAvatarInput.files).slice(0, maxFiles - avatarPreviewsCount);
-        if (selectedFiles.length === 0) return;
-        if (selectedFiles.length > maxFiles) {
+        const userAvatarFiles = userAvatarInput.files;
+        if (!userAvatarFiles) return;
+        if (userAvatarFiles.length > maxFiles) {
             showAlert("You can only upload a maximum of " + maxFiles + " files.");
-            clearFileInput();
+            userAvatarInput.value = "";
             return;
         }
-
-        // Process each file and create avatar previews
-        selectedFiles.forEach((file, i) => {
-            if (avatarPreviewsCount >= maxFiles) return;
+        const filesToProcess = Array.from(userAvatarFiles).slice(0, maxFiles - avatarPreviewsCount);
+        const placeholdersLight = document.querySelectorAll(".avatar.placeholder");
+        const placeholdersDark = document.querySelectorAll(".theme-container.dark-theme .avatar.placeholder");
+        filesToProcess.forEach((file, i) => {
+            if (avatarPreviewsCount >= maxFiles) {
+                return;
+            }
             const reader = new FileReader();
             reader.addEventListener("load", () => {
                 const avatarPreview = createAvatarPreview(file, reader.result);
-                insertAvatarPreview(avatarPreview, avatarPreviewLight);
-                insertAvatarPreview(avatarPreview, avatarPreviewDark);
-                removePlaceholder(i);
+                prependAvatarPreview(avatarPreview, avatarPreviewLight);
+                prependAvatarPreview(avatarPreview, avatarPreviewDark);
+                removePlaceholder(placeholdersLight[i]);
+                removePlaceholder(placeholdersDark[i]);
                 avatarPreviewsCount++;
             });
             reader.readAsDataURL(file);
         });
-        if (avatarPreviewsCount + selectedFiles.length >= maxFiles) {
+        if (avatarPreviewsCount + userAvatarFiles.length >= maxFiles) {
             disableFileInput();
         }
     }
 
-    // Create an avatar preview for a file and image URL
     function createAvatarPreview(file, imageUrl) {
         const avatarPreview = document.createElement("div");
         avatarPreview.classList.add("avatar");
@@ -43,61 +45,26 @@ document.addEventListener("DOMContentLoaded", function () {
         return avatarPreview;
     }
 
-    // Insert an avatar preview into the theme-container
-    function insertAvatarPreview(avatarPreview, container) {
+    function prependAvatarPreview(avatarPreview, container) {
         const clonedPreview = avatarPreview.cloneNode(true);
         container.insertBefore(clonedPreview, container.firstChild);
     }
 
-    // Remove avatar placeholder for both light and dark themes
-
-    function removePlaceholder() {
-        const placeholdersLight = document.querySelectorAll(".avatar.placeholder");
-        const placeholdersDark = document.querySelectorAll(".theme-container.dark-theme .avatar.placeholder");
-
-        placeholdersLight.forEach((placeholder) => {
+    function removePlaceholder(placeholder) {
+        if (placeholder) {
             placeholder.remove();
-        });
-
-        placeholdersDark.forEach((placeholder) => {
-            placeholder.remove();
-        });
+        }
     }
 
-    // Disable user-avatar-input
     function disableFileInput() {
         userAvatarInput.disabled = true;
     }
 
-    // Disable user-avatar-input
-    function clearFileInput() {
-        userAvatarInput.value = "";
-    }
-
-    // Show alert message until closed by user
     function showAlert(message) {
-        const alertContainer = document.getElementById("alert-container");
-        const alertMessage = document.getElementById("alert-message");
-        const closeButton = document.getElementById("alert-close");
-
-        alertMessage.innerHTML = message;
-        alertContainer.style.display = "block";
-
-        closeButton.addEventListener("click", function () {
-            alertContainer.style.display = "none";
-        });
+        alert(message);
     }
 
-    window.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector("form");
-
-        form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent form submission and page refresh
-        });
-    });
-
-    // Remove all avatar previews and reset input state
-    function removeAvatarPreview() {
+    function removeAllAvatarPreviews() {
         if (userAvatarInput.files.length < 1) {
             showAlert("No files uploaded");
             return;
@@ -106,14 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
         avatarPreviews.forEach((preview) => {
             preview.remove();
         });
-        const placeholderAvatars = document.querySelectorAll(".avatar.placeholder");
-        placeholderAvatars.forEach((placeholder) => {
+        const avatarPlaceholders = document.querySelectorAll(".avatar.placeholder");
+        avatarPlaceholders.forEach((placeholder) => {
             placeholder.style.display = "block";
         });
         avatarPreviewsCount = 0;
-        clearFileInput();
+        userAvatarInput.value = "";
         userAvatarInput.disabled = false;
     }
-    const removePreviewsButton = document.getElementById("remove-previews-button");
-    removePreviewsButton.addEventListener("click", removeAvatarPreview);
+    document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
 });
