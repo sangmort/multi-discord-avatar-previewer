@@ -9,18 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleAvatarChange() {
         const userAvatarFiles = userAvatarInput.files;
         if (!userAvatarFiles) return;
-        if (userAvatarFiles.length > maxFiles) {
-            showAlert("You can only upload a maximum of " + maxFiles + " files.");
-            userAvatarInput.value = "";
-            return;
-        }
+
         const filesToProcess = Array.from(userAvatarFiles).slice(0, maxFiles - avatarPreviewsCount);
         const placeholdersLight = document.querySelectorAll(".avatar.placeholder");
         const placeholdersDark = document.querySelectorAll(".theme-container.dark-theme .avatar.placeholder");
+
         filesToProcess.forEach((file, i) => {
             if (avatarPreviewsCount >= maxFiles) {
                 return;
             }
+
             const reader = new FileReader();
             reader.addEventListener("load", () => {
                 const avatarPreview = createAvatarPreview(file, reader.result);
@@ -29,12 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 removePlaceholder(placeholdersLight[i]);
                 removePlaceholder(placeholdersDark[i]);
                 avatarPreviewsCount++;
+
+                if (avatarPreviewsCount === maxFiles) {
+                    showAlert("Only 10 file previews at a time, reset to add more.");
+                    disableFileInput();
+                }
             });
+
             reader.readAsDataURL(file);
         });
-        if (avatarPreviewsCount + userAvatarFiles.length >= maxFiles) {
-            disableFileInput();
-        }
     }
 
     function createAvatarPreview(file, imageUrl) {
