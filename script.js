@@ -65,11 +65,19 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(message);
     }
 
-    function removeAllAvatarPreviews() {
-        if (userAvatarInput.files.length < 1) {
-            showAlert("No files uploaded");
-            return;
-        }
+    function removeSingleAvatarPreview() {
+        const removeOnePreview = document.createElement("button");
+        removeOnePreview.setAttribute("id", "remove-one-preview");
+        removeOnePreview.innerText = "x";
+
+        removeOnePreview.addEventListener("click", function (event) {
+            if (event.target.id === "remove-one-preview") {
+                toggleAvatars();
+            }
+        });
+    }
+
+    function toggleAvatars() {
         const avatarPreviews = document.querySelectorAll(".avatar");
         avatarPreviews.forEach((preview) => {
             preview.remove();
@@ -78,6 +86,16 @@ document.addEventListener("DOMContentLoaded", function () {
         avatarPlaceholders.forEach((placeholder) => {
             placeholder.style.display = "block";
         });
+    }
+
+    function removeAllAvatarPreviews() {
+        if (userAvatarInput.files.length < 1) {
+            showAlert("No files uploaded");
+            return;
+        }
+
+        toggleAvatars();
+
         avatarPreviewsCount = 0;
         userAvatarInput.value = "";
         userAvatarInput.disabled = false;
