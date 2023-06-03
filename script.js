@@ -2,8 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const userAvatarInput = document.getElementById("user-avatar-input");
     const avatarPreviewLight = document.getElementById("avatar-preview-light");
     const avatarPreviewDark = document.getElementById("avatar-preview-dark");
+    const avatarPreviews = document.querySelectorAll(".avatar");
+    const avatarPlaceholders = document.querySelectorAll(".avatar.placeholder");
     const maxFiles = 10;
     let avatarPreviewsCount = 0;
+
     userAvatarInput.addEventListener("change", handleAvatarChange);
 
     function handleAvatarChange() {
@@ -21,16 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const reader = new FileReader();
             reader.addEventListener("load", () => {
-                const avatarPreview = createAvatarPreview(file, reader.result);
-                prependAvatarPreview(avatarPreview, avatarPreviewLight);
-                prependAvatarPreview(avatarPreview, avatarPreviewDark);
+                const avatarPreview = createAvatarPreview(file, reader.result, i);
+                prependAvatarPreview(avatarPreview, avatarPreviewLight, i);
+                prependAvatarPreview(avatarPreview, avatarPreviewDark, i);
                 removePlaceholder(placeholdersLight[i]);
                 removePlaceholder(placeholdersDark[i]);
                 avatarPreviewsCount++;
 
                 if (avatarPreviewsCount === maxFiles) {
                     showAlert("Only 10 file previews at a time, reset to add more.");
-                    disableFileInput();
+                    userAvatarInput.disabled = true;
                 }
             });
 
@@ -38,16 +41,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function createAvatarPreview(file, imageUrl) {
+    function createAvatarPreview(file, imageUrl, index) {
         const avatarPreview = document.createElement("div");
         avatarPreview.classList.add("avatar");
         avatarPreview.style.backgroundImage = `url(${imageUrl})`;
         avatarPreview.classList.toggle("placeholder", !file);
+
+        const removeButton = document.createElement("button");
+        removeButton.classList.add("remove-button");
+        removeButton.textContent = "Remove";
+        removeButton.dataset.index = index; // Set the index as a data attribute
+        removeButton.addEventListener("click", handleRemoveButtonClick);
+
+        avatarPreview.appendChild(removeButton);
         return avatarPreview;
     }
 
-    function prependAvatarPreview(avatarPreview, container) {
+    function removeAvatarPreview(avatarPreview, index) {
+        avatarPreview.remove();
+        avatarPreviewsCount--;
+
+        if (avatarPreviewsCount < maxFiles) {
+            userAvatarInput.disabled = false;
+        }
+
+        const remainingPreviews = document.querySelectorAll(".avatar");
+        for (let i = index; i < remainingPreviews.length; i++) {
+            remainingPreviews[i].querySelector(".remove-button").dataset.index = i;
+        }
+    }
+
+    function prependAvatarPreview(avatarPreview, container, index) {
         const clonedPreview = avatarPreview.cloneNode(true);
+        const clonedRemoveButton = clonedPreview.querySelector(".remove-button");
+        clonedRemoveButton.dataset.index = index;
+        clonedRemoveButton.addEventListener("click", handleRemoveButtonClick);
         container.insertBefore(clonedPreview, container.firstChild);
     }
 
@@ -57,35 +85,38 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function disableFileInput() {
-        userAvatarInput.disabled = true;
-    }
-
     function showAlert(message) {
         alert(message);
     }
 
-    function removeSingleAvatarPreview() {
-        const removeOnePreview = document.createElement("button");
-        removeOnePreview.setAttribute("id", "remove-one-preview");
-        removeOnePreview.innerText = "x";
-
-        removeOnePreview.addEventListener("click", function (event) {
-            if (event.target.id === "remove-one-preview") {
-                toggleAvatars();
-            }
-        });
-    }
-
     function toggleAvatars() {
-        const avatarPreviews = document.querySelectorAll(".avatar");
+        const removeButtons = document.querySelectorAll(".remove-button");
+        removeButtons.forEach((button) => {
+            const index = button.dataset.index;
+            button.removeEventListener("click", handleRemoveButtonClick);
+            button.addEventListener("click", handleRemoveButtonClick);
+        });
+
         avatarPreviews.forEach((preview) => {
             preview.remove();
         });
-        const avatarPlaceholders = document.querySelectorAll(".avatar.placeholder");
+
         avatarPlaceholders.forEach((placeholder) => {
             placeholder.style.display = "block";
         });
+    }
+
+    function handleRemoveButtonClick(event) {
+        const removeButton = event.target;
+        const avatarPreview = removeButton.parentNode;
+        const index = parseInt(removeButton.dataset.index);
+        removeAvatarPreview(avatarPreview, index);
+
+        const remainingPreviews = document.querySelectorAll(".avatar");
+        for (let i = index; i < remainingPreviews.length; i++) {
+            const removeButton = remainingPreviews[i].querySelector(".remove-button");
+            removeButton.dataset.index = i.toString();
+        }
     }
 
     function removeAllAvatarPreviews() {
@@ -100,5 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
         userAvatarInput.value = "";
         userAvatarInput.disabled = false;
     }
+
     document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
 });
