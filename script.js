@@ -41,6 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function removePlaceholder(placeholder) {
+        if (placeholder) {
+            placeholder.remove();
+        }
+    }
+
     function createAvatarPreview(file, imageUrl, index) {
         const avatarPreview = document.createElement("div");
         avatarPreview.classList.add("avatar");
@@ -49,61 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const removeButton = document.createElement("button");
         removeButton.classList.add("remove-button");
-        removeButton.textContent = "Remove";
+        removeButton.textContent = "x";
         removeButton.dataset.index = index; // Set the index as a data attribute
         removeButton.addEventListener("click", handleRemoveButtonClick);
 
         avatarPreview.appendChild(removeButton);
         return avatarPreview;
-    }
-
-    function removeAvatarPreview(avatarPreview, index) {
-        avatarPreview.remove();
-        avatarPreviewsCount--;
-
-        if (avatarPreviewsCount < maxFiles) {
-            userAvatarInput.disabled = false;
-        }
-
-        const remainingPreviews = document.querySelectorAll(".avatar");
-        for (let i = index; i < remainingPreviews.length; i++) {
-            remainingPreviews[i].querySelector(".remove-button").dataset.index = i;
-        }
-    }
-
-    function prependAvatarPreview(avatarPreview, container, index) {
-        const clonedPreview = avatarPreview.cloneNode(true);
-        const clonedRemoveButton = clonedPreview.querySelector(".remove-button");
-        clonedRemoveButton.dataset.index = index;
-        clonedRemoveButton.addEventListener("click", handleRemoveButtonClick);
-        container.insertBefore(clonedPreview, container.firstChild);
-    }
-
-    function removePlaceholder(placeholder) {
-        if (placeholder) {
-            placeholder.remove();
-        }
-    }
-
-    function showAlert(message) {
-        alert(message);
-    }
-
-    function toggleAvatars() {
-        const removeButtons = document.querySelectorAll(".remove-button");
-        removeButtons.forEach((button) => {
-            const index = button.dataset.index;
-            button.removeEventListener("click", handleRemoveButtonClick);
-            button.addEventListener("click", handleRemoveButtonClick);
-        });
-
-        avatarPreviews.forEach((preview) => {
-            preview.remove();
-        });
-
-        avatarPlaceholders.forEach((placeholder) => {
-            placeholder.style.display = "block";
-        });
     }
 
     function handleRemoveButtonClick(event) {
@@ -119,6 +76,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function removeAvatarPreview(avatarPreview, index) {
+        const placeholder = createPlaceholder(index); // Create a new placeholder
+        avatarPreview.replaceWith(placeholder); // Replace the removed preview with the placeholder
+        avatarPreviewsCount--;
+
+        if (avatarPreviewsCount < maxFiles) {
+            userAvatarInput.disabled = false;
+        }
+
+        const remainingPreviews = document.querySelectorAll(".avatar");
+        for (let i = index; i < remainingPreviews.length; i++) {
+            remainingPreviews[i].querySelector(".remove-button").dataset.index = i;
+        }
+    }
+
+    function createPlaceholder(index) {
+        const placeholder = document.createElement("div");
+        placeholder.classList.add("avatar", "placeholder");
+        placeholder.dataset.index = index;
+        return placeholder;
+    }
+
+    function prependAvatarPreview(avatarPreview, container, index) {
+        const clonedPreview = avatarPreview.cloneNode(true);
+        const clonedRemoveButton = clonedPreview.querySelector(".remove-button");
+        clonedRemoveButton.dataset.index = index;
+        clonedRemoveButton.addEventListener("click", handleRemoveButtonClick);
+        container.insertBefore(clonedPreview, container.firstChild);
+    }
+
     function removeAllAvatarPreviews() {
         if (userAvatarInput.files.length < 1) {
             showAlert("No files uploaded");
@@ -132,5 +119,19 @@ document.addEventListener("DOMContentLoaded", function () {
         userAvatarInput.disabled = false;
     }
 
+    function toggleAvatars() {
+        avatarPreviews.forEach((preview) => {
+            preview.remove();
+        });
+
+        avatarPlaceholders.forEach((placeholder) => {
+            placeholder.style.display = "block";
+        });
+    }
+
     document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
+
+    function showAlert(message) {
+        alert(message);
+    }
 });
