@@ -67,20 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const removeButton = event.target;
         const avatarPreview = removeButton.parentNode;
         const index = parseInt(removeButton.dataset.index);
-        const containerLight = avatarPreview.closest("#avatar-preview-light");
-        const containerDark = avatarPreview.closest("#avatar-preview-dark");
 
         removeAvatarPreview(avatarPreview, index);
-        removeAvatarPreview(containerLight.children[index], index); // Remove from light theme container
-        removeAvatarPreview(containerDark.children[index], index); // Remove from dark theme container
-
-        const remainingPreviews = document.querySelectorAll(".avatar");
-        for (let i = index; i < remainingPreviews.length; i++) {
-            const removeButtons = remainingPreviews[i].querySelectorAll(".remove-button");
-            removeButtons.forEach((button) => {
-                button.dataset.index = i.toString();
-            });
-        }
     }
 
     function removeAvatarPreview(avatarPreview, index) {
