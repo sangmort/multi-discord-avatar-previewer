@@ -35,13 +35,16 @@
 
         <section class="avatar-uploader">
             <form id="avatar-uploader-form">
-                <label for="user-avatar-input"
-                    class="choose-avatars">Upload</label>
-                <input type="file" id="user-avatar-input"
-                    accept=".jpg, .jpeg, .png, .gif" multiple />
+                <div class="input-container">
+                    <input type="file" id="user-avatar-input"
+                        accept=".jpg, .jpeg, .png, .gif" multiple disabled />
+                    <label for="user-avatar-input"
+                        class="choose-avatars">Upload</label>
+                </div>
                 <button id="remove-previews-button">Reset</button>
             </form>
         </section>
+
 
         <section class="theme-container">
             <section class="light-theme">
