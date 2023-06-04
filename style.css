@@ -179,6 +179,27 @@ button#remove-previews-button:hover {
     padding: 0.5rem 1rem;
 }
 
+.input-container {
+    position: relative;
+}
+
+.input-container:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+input[type="file"]:disabled + .choose-avatars {
+    opacity: 0.5;
+    background-color: gray;
+    cursor: not-allowed;
+    border: none;
+}
+
 button.remove-button {
     display: block;
     position: relative;
