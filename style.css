@@ -175,6 +175,8 @@ button#remove-previews-button:hover {
     width: 6rem;
     cursor: pointer;
     transition: 300ms ease-in-out;
+    transform: translate(0, -2px);
+    box-shadow: rgba(7, 16, 110, 0.44) 0px 2px 9px;
     padding: 0.5rem 1rem;
 }
 
