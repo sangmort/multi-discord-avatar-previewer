@@ -233,7 +233,18 @@ button.remove-button:hover {
 
 @media (max-width: 768px) {
     body {
-        padding: .25rem;
+        padding: 0.25rem;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        border-radius: 1rem;
+        padding: 2rem;
+        height: 82vh;
     }
 
     .theme-container {
@@ -241,4 +252,3 @@ button.remove-button:hover {
         flex-wrap: wrap;
     }
 }
-
