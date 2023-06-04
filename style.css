@@ -233,7 +233,7 @@ button.remove-button:hover {
 
 @media (max-width: 768px) {
     body {
-        padding: 1rem;
+        padding: .25rem;
     }
 
     .theme-container {
