@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         avatarPreview.classList.toggle("placeholder", !file);
         const removeButton = document.createElement("button");
         removeButton.classList.add("remove-button");
-        removeButton.textContent = "x";
+        removeButton.textContent = "remove";
         removeButton.dataset.index = index;
         removeButton.addEventListener("click", handleRemoveButtonClick);
         avatarPreview.appendChild(removeButton);
