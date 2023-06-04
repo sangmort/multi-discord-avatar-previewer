@@ -76,7 +76,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 50vw;
     border-radius: 1rem;
     padding: 2rem;
@@ -209,4 +208,15 @@ button.remove-button:hover {
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .theme-container {
+        flex: 0 1 50%;
+        flex-wrap: wrap;
+    }
 }
