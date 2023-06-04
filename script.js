@@ -30,7 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 avatarPreviewsCount++;
 
                 if (avatarPreviewsCount === maxFiles) {
-                    showAlert("Only 10 file previews at a time, reset to add more.");
+                    showAlert(
+                        "Only 10 file previews at a time, remove some previews or click the reset button to add more."
+                    );
                     userAvatarInput.disabled = true;
                 }
             });
@@ -116,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function removeAllAvatarPreviews() {
         if (userAvatarInput.files.length < 1) {
-            showAlert("No files uploaded");
+            showAlert("You haven't uploaded any images yet to reset.");
             return;
         }
 
@@ -136,9 +138,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
-
     function showAlert(message) {
         alert(message);
     }
+
+    document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
 });
