@@ -243,7 +243,7 @@ button.remove-button:hover {
         align-items: center;
         width: 90vw;
         border-radius: 1rem;
-        padding: 2rem;
+        padding: .5rem;
         height: 82vh;
     }
 
