@@ -34,7 +34,7 @@ img {
 }
 
 :root {
-    --blurple: #5865f2;
+    --blurple: hsl(235, 86%, 65%);
     --discord-black: #23272a;
     --border-width: 1px;
     --avatar-border-color-lt: hsl(234, 4%, 45%);
@@ -200,10 +200,11 @@ button.remove-button:hover {
     align-items: center;
     width: 40px;
     height: 40px;
-    font-size: 1rem;
+    font-size: 0.45rem;
+    letter-spacing: 0.025rem;
     text-transform: uppercase;
     border-radius: 20px;
-    background-color: hsla(265, 100%, 50%, 0.7);
+    background-color: hsla(0, 0%, 0%, 0.8);
     border: none;
     color: #fff;
     font-weight: bold;
