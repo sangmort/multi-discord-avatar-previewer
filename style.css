@@ -125,3 +125,8 @@ main {
 input[type="file"] {
     display: none;
 }
+
+.choose-avatars {
+    color: red;
+    border: 1px solid purple;
+}
