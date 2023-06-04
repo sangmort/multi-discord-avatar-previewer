@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!userAvatarFiles) return;
         const filesToProcess = Array.from(userAvatarFiles).slice(0, maxFiles - avatarPreviewsCount);
         const placeholdersLight = document.querySelectorAll(".avatar.placeholder");
-        const placeholdersDark = document.querySelectorAll(".theme-container.dark-theme .avatar.placeholder");
+        const placeholdersDark = document.querySelectorAll(".dark-theme .avatar.placeholder");
         filesToProcess.forEach((file, i) => {
             if (avatarPreviewsCount >= maxFiles) {
                 return;
