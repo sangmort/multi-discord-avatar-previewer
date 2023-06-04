@@ -84,7 +84,6 @@ main {
 .theme-container {
     display: flex;
     flex-direction: row;
-    margin-top: 1.25rem;
 }
 
 .avatar-container {
