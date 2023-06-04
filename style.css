@@ -14,7 +14,10 @@ h5,
 h6,
 p,
 ol,
-ul {
+ul,
+button,
+input,
+label {
     margin: 0;
     padding: 0;
     font-weight: normal;
@@ -31,6 +34,8 @@ img {
 }
 
 :root {
+    --blurple: #5865f2;
+    --discord-black: #23272a;
     --border-width: 1px;
     --avatar-border-color-lt: hsl(234, 4%, 45%);
     --avatar-border-color-dk: hsl(231, 5%, 53%);
@@ -41,9 +46,12 @@ img {
 body {
     font-family: "Nunito", sans-serif;
     text-align: center;
-    background-color: hsl(180, 5%, 16%);
-    color: hsl(30, 3%, 77%);
-    padding: 2rem;
+    background-color: var(--discord-black);
+    color: hsl(0, 0%, 97%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 h1,
@@ -68,37 +76,45 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 300px;
+
+    width: 50vw;
+    border-radius: 1rem;
+    padding: 2rem;
+    height: 82vh;
 }
 
 .theme-container {
+    display: flex;
+    flex-direction: row;
     margin-top: 1.25rem;
 }
 
-.avatar-uploader {
-    display: flex;
-    justify-content: center;
-}
-
 .avatar-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.1rem 0.1rem;
+    grid-auto-flow: row;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    justify-items: center;
     align-items: center;
+    grid-template-areas:
+        ". . . . ."
+        ". . . . .";
     border-radius: 0.5rem;
-    margin-top: 0.35rem;
-    padding: 2rem;
+    margin: 0.5rem 1rem;
+    padding: 1rem 1.25rem;
 }
 
 #avatar-preview-light {
     background-color: var(--avatar-bg-color-lt);
-    border: var(--border-width) solid var(--avatar-border-color-lt);
+    border: var(--border-width) solid var(--blurple);
 }
 
 #avatar-preview-dark {
     background-color: var(--avatar-bg-color-dk);
-    border: var(--border-width) solid var(--avatar-border-color-dk);
+    border: var(--border-width) solid var(--blurple);
 }
 
 .avatar {
@@ -117,16 +133,79 @@ main {
     border: none;
 }
 
-#alert-container {
-    display: block;
-    position: relative;
-}
-
 input[type="file"] {
     display: none;
 }
 
-.choose-avatars {
-    color: red;
-    border: 1px solid purple;
+#avatar-uploader-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+label,
+button#remove-previews-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: var(--avatar-bg-color-lt);
+    border: 1px solid var(--blurple);
+    border-radius: 2rem;
+    background: #23272a;
+    margin: 0.5rem;
+    height: 2rem;
+    width: 6rem;
+    padding: 0.5rem 1rem;
+}
+
+label:hover,
+button#remove-previews-button:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #ffffff;
+    border: 1px solid var(--blurple);
+    border-radius: 2rem;
+    background: var(--blurple);
+    margin: 0.5rem;
+    height: 2rem;
+    width: 6rem;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+    padding: 0.5rem 1rem;
+}
+
+button.remove-button {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    font-weight: bold;
+}
+
+button.remove-button:hover {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 20px;
+    background-color: hsla(265, 100%, 50%, 0.7);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
