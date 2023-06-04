@@ -34,15 +34,17 @@
         </header>
 
         <section class="avatar-uploader">
-            <form>
-                <label for="user-avatar-input" class="choose-avatars">Choose Avatars</label>
+            <form id="avatar-uploader-form">
+                <label for="user-avatar-input"
+                    class="choose-avatars">Upload</label>
                 <input type="file" id="user-avatar-input"
                     accept=".jpg, .jpeg, .png, .gif" multiple />
                 <button id="remove-previews-button">Reset</button>
             </form>
         </section>
 
-        <section class="theme-container light-theme">
+        <section class="theme-container">
+        <section class="light-theme">
             <h2>Light Theme</h2>
             <div id="avatar-preview-light" class="avatar-container">
                 <div class="avatar placeholder"></div>
@@ -58,7 +60,7 @@
             </div>
         </section>
 
-        <section class="theme-container dark-theme">
+        <section class="dark-theme">
             <h2>Dark Theme</h2>
             <div id="avatar-preview-dark" class="avatar-container">
                 <div class="avatar placeholder"></div>
@@ -73,6 +75,7 @@
                 <div class="avatar placeholder"></div>
             </div>
         </section>
+    </section>
     </main>
 </body>
 
