@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const userAvatarInput = document.getElementById("user-avatar-input");
     const avatarPreviewLight = document.getElementById("avatar-preview-light");
     const avatarPreviewDark = document.getElementById("avatar-preview-dark");
