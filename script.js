@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Multiple Discord Avatar Previewer
     const userAvatarInput = document.getElementById("user-avatar-input");
     const avatarPreviewLight = document.getElementById("avatar-preview-light");
     const avatarPreviewDark = document.getElementById("avatar-preview-dark");
@@ -141,6 +142,37 @@ document.addEventListener("DOMContentLoaded", function () {
     function showAlert(message) {
         alert(message);
     }
+
+    // Modal
+    const openModal = document.querySelectorAll("[data-open]");
+    const closeModal = document.querySelectorAll("[data-close]");
+    const modalIsVisible = "is-visible";
+
+    for (const element of openModal) {
+        element.addEventListener("click", function () {
+            const modalId = this.dataset.open;
+            document.getElementById(modalId).classList.add(modalIsVisible);
+        });
+    }
+
+    for (const element of closeModal) {
+        element.addEventListener("click", function () {
+            const modal = this.closest(".modal");
+            modal.classList.remove(modalIsVisible);
+        });
+    }
+
+    document.addEventListener("click", (e) => {
+        if (e.target == document.querySelector(".modal.is-visible")) {
+            document.querySelector(".modal.is-visible").classList.remove(modalIsVisible);
+        }
+    });
+
+    document.addEventListener("keyup", (e) => {
+        if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
+            document.querySelector(".modal.is-visible").classList.remove(modalIsVisible);
+        }
+    });
 
     document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
 });
