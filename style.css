@@ -165,11 +165,11 @@ button#remove-previews-button {
     height: 2rem;
     width: 6rem;
     padding: 0.5rem 1rem;
+    transition: 300ms ease-in-out;
 }
 
 label:hover,
-button#remove-previews-button:hover,
-button.open-modal:hover {
+button#remove-previews-button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,10 +217,13 @@ button.remove-button {
     left: 0;
     width: 40px;
     height: 40px;
+    border-radius: 20px;
+
     background-color: transparent;
     border: none;
     color: transparent;
     font-weight: bold;
+    transition: 300ms ease-in-out;
 }
 
 button.remove-button:hover {
@@ -239,6 +242,7 @@ button.remove-button:hover {
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    transition: 300ms ease-in-out;
 }
 
 .theme-wrapper {
@@ -299,12 +303,23 @@ button.open-modal {
     font-size: 1rem;
     color: var(--avatar-bg-color-lt);
     border: 1px solid var(--blurple);
-    border-radius: 2rem;
+    border-radius: 6rem;
     background: #23272a;
     margin: 0.5rem;
-    height: 2rem;
-    width: 6rem;
-    padding: 0.5rem 1rem;
+    height: 3rem;
+    width: 3rem;
+    padding: 2rem;
+    transition: 300ms ease-in-out;
+
+}
+
+button.open-modal:hover {
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+    transform: translate(0, -2px);
+    box-shadow: hsla(235, 100%, 50%, 0.718) 0px 0px 9px;
+    background-color: hsla(235, 94%, 36%, 0.718);
+    border-color: hsla(235, 94%, 36%, 0.718);
 }
 
 /* Modal */
@@ -358,6 +373,13 @@ button.open-modal {
 
 .modal-header > h2 {
     margin-top: 0rem;
+}
+
+.modal-button {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 999;
 }
 
 /* Responsiveness for smaller screens */
