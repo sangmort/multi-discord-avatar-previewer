@@ -95,7 +95,7 @@ p.tagline {
     font-size: 1rem;
 }
 
-
+/* Layout */
 body {
     font-family: "Noto Sans", sans-serif;
     font-weight: 400;
@@ -118,12 +118,27 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 15vh;
     }
 
 main {
     width: 50vw;
     border-radius: 1rem;
-    height: 82vh;
+    height: 80vh;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content:right;
+    justify-items: right;
+    height: 3vh;
+}
+
+footer > small {
+    position: fixed;
+    right: 2rem;
+    bottom: .75rem;
 }
 
 input[type="file"] {
@@ -274,20 +289,6 @@ button.remove-button:hover {
     background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
     background-color: var(--avatar-border-color-dk);
     border: none;
-}
-
-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    justify-items: center;
-}
-
-.page-footer {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 999;
 }
 
 .open-modal {
