@@ -132,6 +132,16 @@ main {
     border-radius: 1rem;
 }
 
+.instructions-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+div.instructions-wrapper :first-of-type {
+    margin-top: 0;
+}
+
 footer {
     display: flex;
     flex-direction: column;
