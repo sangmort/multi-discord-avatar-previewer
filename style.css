@@ -49,6 +49,7 @@ body {
     background-color: var(--discord-black);
     color: hsl(0, 0%, 97%);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -67,7 +68,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 main {
@@ -79,55 +80,6 @@ main {
     border-radius: 1rem;
     padding: 2rem;
     height: 82vh;
-}
-
-.theme-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.avatar-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.1rem 0.1rem;
-    grid-auto-flow: row;
-    justify-content: space-evenly;
-    align-content: space-evenly;
-    justify-items: center;
-    align-items: center;
-    grid-template-areas:
-        ". . . . ."
-        ". . . . .";
-    border-radius: 0.5rem;
-    margin: 0.5rem 1rem;
-    padding: 1rem 1.25rem;
-}
-
-#avatar-preview-light {
-    background-color: var(--avatar-bg-color-lt);
-    border: var(--border-width) solid var(--blurple);
-}
-
-#avatar-preview-dark {
-    background-color: var(--avatar-bg-color-dk);
-    border: var(--border-width) solid var(--blurple);
-}
-
-.avatar {
-    margin: 5px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-size: cover;
-    background-clip: padding-box;
-    background-position: 50% 50%;
-}
-
-.placeholder {
-    background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
-    background-color: var(--avatar-border-color-dk);
-    border: none;
 }
 
 input[type="file"] {
@@ -179,11 +131,11 @@ button#remove-previews-button:hover {
     padding: 0.5rem 1rem;
 }
 
-.input-container {
+.input-wrapper {
     position: relative;
 }
 
-.input-container:after {
+.input-wrapper:after {
     content: "";
     position: absolute;
     top: 0;
@@ -231,6 +183,135 @@ button.remove-button:hover {
     cursor: pointer;
 }
 
+.theme-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#avatar-preview-light {
+    background-color: var(--avatar-bg-color-lt);
+    border: var(--border-width) solid var(--blurple);
+}
+
+#avatar-preview-dark {
+    background-color: var(--avatar-bg-color-dk);
+    border: var(--border-width) solid var(--blurple);
+}
+
+.avatar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.1rem 0.1rem;
+    grid-auto-flow: row;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+        ". . . . ."
+        ". . . . .";
+    border-radius: 0.5rem;
+    margin: 0.5rem 1rem;
+    padding: 1rem 1.25rem;
+}
+
+.avatar {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-clip: padding-box;
+    background-position: 50% 50%;
+}
+
+.placeholder {
+    background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
+    background-color: var(--avatar-border-color-dk);
+    border: none;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: flex-start;
+}
+
+.page-footer {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.open-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: var(--avatar-bg-color-lt);
+    border: 1px solid var(--blurple);
+    border-radius: 2rem;
+    background: #23272a;
+    margin: 0.5rem;
+    height: 2rem;
+    width: 6rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.35s ease-in;
+}
+
+.modal.is-visible {
+    display: flex;
+    justify-content: center;
+    visibility: visible;
+    opacity: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    max-height: 80vh;
+    border-radius: 4rem;
+}
+
+div.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    padding: 1rem;
+    background: var(--avatar-bg-color-dk);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header .close-modal {
+    font-size: 1.5rem;
+}
+
+.modal p + p {
+    margin-top: 1rem;
+}
+
+/* Responsiveness for smaller screens */
 @media (max-width: 768px) {
     body {
         padding: 0.25rem;
@@ -243,11 +324,11 @@ button.remove-button:hover {
         align-items: center;
         width: 90vw;
         border-radius: 1rem;
-        padding: .5rem;
+        padding: 0.5rem;
         height: 82vh;
     }
 
-    .theme-container {
+    .theme-wrapper {
         flex: 0 1 50%;
         flex-wrap: wrap;
     }
