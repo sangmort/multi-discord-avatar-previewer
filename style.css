@@ -122,24 +122,29 @@ header {
     }
 
 main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 50vw;
     border-radius: 1rem;
-    height: 80vh;
+    height: 75vh;
 }
 
 footer {
     display: flex;
     flex-direction: column;
-    justify-content:right;
-    justify-items: right;
-    height: 3vh;
+    justify-content:center;
+    justify-items: center;
+    height: 5vh;
 }
 
-footer > small {
+/* footer > small {
     position: fixed;
-    right: 2rem;
-    bottom: .75rem;
-}
+    right: 5%;
+    bottom: 5%;
+    text-align: right;
+} */
 
 input[type="file"] {
     display: none;
@@ -245,6 +250,7 @@ button.remove-button:hover {
 .theme-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 #avatar-preview-light {
