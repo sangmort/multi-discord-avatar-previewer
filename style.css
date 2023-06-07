@@ -147,43 +147,39 @@ input[type="file"] {
     align-items: center;
 }
 
+label {
+    background: var(--blurple);
+}
+
+button#remove-previews-button {
+    background-color: var(--discord-black);
+}
+
 label,
 button#remove-previews-button {
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: var(--avatar-bg-color-lt);
-    border: 1px solid var(--blurple);
+    border: var(--border-width) solid var(--blurple);
     border-radius: 2rem;
-    background: #23272a;
     margin: 0.5rem;
-    height: 2rem;
-    width: 6rem;
-    padding: 0.5rem 1rem;
-    transition: 300ms ease-in-out;
+    height: 40px;
+    width: 124px;
+    transition: 200ms ease-in;
 }
 
 label:hover,
 button#remove-previews-button:hover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    font-size: 1rem;
     color: #ffffff;
-    border: 1px solid var(--blurple);
-    border-radius: 2rem;
-    background: var(--blurple);
-    margin: 0.5rem;
-    height: 2rem;
-    width: 6rem;
+    border: var(--border-width) solid var(--blurple);
+    background: linear-gradient(180deg,#7289da 5%, var(--blurple));
     cursor: pointer;
-    transition: 300ms ease-in-out;
+    transition: 250ms ease-in;
     transform: translate(0, -2px);
-    box-shadow: rgba(7, 16, 110, 0.44) 0px 2px 9px;
-    padding: 0.5rem 1rem;
+    box-shadow: hsl(223, 100%, 5%) 0px 8px 15px, hsl(226, 100%, 17%) 0px 20px 30px;
 }
 
 .input-wrapper {
@@ -202,9 +198,14 @@ button#remove-previews-button:hover {
 
 input[type="file"]:disabled + .choose-avatars {
     opacity: 0.5;
+    background: none;
     background-color: gray;
     cursor: not-allowed;
     border: none;
+    transition: none;
+    transform: none;
+    box-shadow: none;
+
 }
 
 button.remove-button {
@@ -299,7 +300,7 @@ button.open-modal {
     box-sizing: border-box;
     font-size: 1rem;
     color: var(--avatar-bg-color-lt);
-    border: 1px solid var(--blurple);
+    border: var(--border-width) solid var(--blurple);
     border-radius: 6rem;
     background: #23272a;
     margin: 0.5rem;
