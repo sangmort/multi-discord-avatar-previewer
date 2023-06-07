@@ -123,10 +123,10 @@ body {
 header,
 main,
 aside,
-footer,
+footer, .page-wrapper,
 .instructions-wrapper,
-.theme-wrapper,
-.page-wrapper {
+.theme-wrapper, #avatar-uploader-form
+ {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,15 +135,18 @@ footer,
     gap: 1.5rem;
 }
 
+
 .page-wrapper {
     height: 100vh;
     margin: 0 calc(-50vw + 50%);
     max-width: none;
 }
 
-.theme-wrapper {
+.theme-wrapper, #avatar-uploader-form {
     flex-direction: row;
+    gap: 0;
 }
+
 
 header {
     gap: 0;
@@ -166,12 +169,7 @@ input[type="file"] {
     display: none;
 }
 
-#avatar-uploader-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
+
 
 label {
     background: var(--blurple);
