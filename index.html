@@ -32,18 +32,23 @@
             <p class="tagline">Visualize multiple images as discord avatars</p>
         </header>
 
-        <main>
+        <div>
             <div class="instructions-wrapper">
-            <h2>How to Use</h2>
-            <p>Click "upload" button & select up to 10 images. These images will
-                be
-                styled the way they are in the discord app, giving you a preview
-                of
-                what it would look like when you use it on discord.</p>
-            <p> To remove an
-                individual preview, click on it. To remove multiples, hit the
-                reset
-                button to clear all the previews.</p>
+
+                <p>Remove the toil of previewing images as discord avatars one-by-one from the
+                    discord app. This site applies the same
+                    CSS to images the Discord App does, and lets you preview
+                    multiple avatars on Discord's light and dark theme.
+                </p>
+                <p> Click the upload button and select up to 10 images you'd
+                    like to preview as discord avatars. To remove a specific
+                    avatar preview, simply click on it. To remove all previews
+                    at
+                    once, hit the
+                    reset
+                    button.</p>
+
+
             </div>
             <div class="avatar-uploader">
                 <form id="avatar-uploader-form">
@@ -58,7 +63,7 @@
             </div>
             <div class="theme-wrapper">
                 <div class="light-theme">
-                    <h3>Light Theme</h3>
+                    <h2>Light Theme</h2>
                     <div id="avatar-preview-light" class="avatar-container">
                         <div class="avatar placeholder"></div>
                         <div class="avatar placeholder"></div>
@@ -73,7 +78,7 @@
                     </div>
                 </div>
                 <div class="dark-theme">
-                    <h3>Dark Theme</h3>
+                    <h2>Dark Theme</h2>
                     <div id="avatar-preview-dark" class="avatar-container">
                         <div class="avatar placeholder"></div>
                         <div class="avatar placeholder"></div>
@@ -89,14 +94,23 @@
                 </div>
             </div>
 
+            <div class="note-wrapper">
+                <aside>
+                    <p>For best results, ensure your browser zoom
+                        is set to 100%, and dark mode is off.</p>
+                    <p>Don't worry,
+                        this site is dark by default.</p>
+                </aside>
+            </div>
+
             <div class="modal-button">
                 <button type="button" class="open-modal"
                     data-open="modal-about">About</button>
             </div>
 
 
-                <div id="modal-about" class="modal">
-                    <div class="modal-wrapper">
+            <div id="modal-about" class="modal">
+                <div class="modal-wrapper">
                     <header class="modal-header">
                         <h2>About</h2>
                         <button class="close-modal" aria-label="close modal"
@@ -156,11 +170,11 @@
                     </footer>
                 </div>
             </div>
-        </main>
+            </main>
 
-        <footer>
-            <small>Made by <a href="https://github.com/sangmort"
-                    target="_blank">Osy</a> </small>
-        </footer>
-    </div>
+            <footer>
+                <small>Made by <a href="https://github.com/sangmort"
+                        target="_blank">Osy</a> </small>
+            </footer>
+        </div>
 </body>
