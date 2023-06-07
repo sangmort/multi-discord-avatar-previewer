@@ -90,15 +90,29 @@ p + p {
 }
 
 p.tagline {
-    font-weight: 600;
+    text-align: center;
     font-style: italic;
-    text-transform: capitalize;
+    font-weight: 300;
     font-size: 1rem;
+
+}
+
+
+aside > p + p {
+    margin-top: 0;
+}
+
+aside p {
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    font-size: .8rem;
+
 }
 
 /* Layout */
 body {
-    font-family: "Noto Sans", sans-serif;
+    font-family: 'Noto Sans Display', sans-serif;
     font-weight: 400;
     line-height: 1.5rem;
     background-color: var(--discord-black);
@@ -118,13 +132,6 @@ footer,
     align-items: center;
 }
 
-aside > p + p {
-    margin-top: 0;
-}
-
-aside p {
-    text-align: center;
-}
 
 .page-wrapper {
     gap: 1rem;
