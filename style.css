@@ -53,7 +53,6 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-    margin: 1.5rem 0 0.5rem;
     text-align: center;
     font-weight: 600;
     line-height: 1.3;
@@ -61,8 +60,6 @@ h6 {
 
 h1 {
     font-size: 1.6rem;
-    margin-top: 0;
-    margin-bottom: 0;
     font-weight: 700;
     letter-spacing: 0.02rem;
 }
@@ -121,29 +118,43 @@ body {
     line-height: 1.5rem;
     background-color: var(--discord-black);
     color: hsl(0, 0%, 97%);
-
 }
 
 header,
 main,
 aside,
 footer,
-.instructions-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 625px;
-}
-
+.instructions-wrapper,
+.theme-wrapper,
 .page-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    height: 93vh;
+    max-width: 650px;
+    gap: 1.5rem;
+}
+
+.page-wrapper {
+    height: 100vh;
     margin: 0 calc(-50vw + 50%);
+    max-width: none;
+}
+
+.theme-wrapper {
+    flex-direction: row;
+}
+
+header {
+    gap: 0;
+}
+
+main {
+    min-height: 50vh;
+}
+
+aside {
+    gap: 0;
 }
 
 /* If adding a heading to this div, uncomment below */
@@ -255,12 +266,6 @@ button.remove-button:hover {
     font-weight: bold;
     cursor: pointer;
     transition: 300ms ease-in-out;
-}
-
-.theme-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
 }
 
 #avatar-preview-light {
@@ -393,7 +398,7 @@ button.open-modal:hover {
     margin-top: 0rem;
 }
 
-/* Responsiveness for smaller screens */
+/* Responsiveness for small screens */
 @media (max-width: 768px) {
     html {
         font-size: 12px;
@@ -401,31 +406,43 @@ button.open-modal:hover {
     }
 
     body {
-        overflow: hidden;
+        overflow-x: hidden;
         position: relative;
         margin: 0;
         padding: 0;
     }
-
     header,
-main,
-aside,
-footer,
-.instructions-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 90vw;
-}
+    main,
+    aside,
+    footer,
+    .instructions-wrapper,
+    .theme-wrapper,
+    .avatar-uploader,
+    .page-wrapper {
+        max-width: 90vw;
+        gap: 1.5rem;
+    }
 
     .page-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 0.25rem;
         height: 100vh;
+        margin: 0 calc(-50vw + 50%);
+        max-width: none;
+    }
+
+    .theme-wrapper {
+        flex-direction: row;
+    }
+
+    header {
+        gap: 0;
+    }
+
+    main {
+        min-height: 60vh;
+    }
+
+    aside {
+        gap: 0;
     }
 
     .theme-wrapper {
@@ -433,34 +450,11 @@ footer,
         flex-wrap: wrap;
     }
 
-    #avatar-uploader-form {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-
     label,
     button#remove-previews-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-        font-size: 1.25rem;
-        color: var(--avatar-bg-color-lt);
-        border: var(--border-width) solid var(--blurple);
-        border-radius: 2rem;
-        margin-top: 1rem;
         height: 50px;
         width: 158px;
         transition: 200ms ease-in;
-    }
-
-    aside > p {
-        line-height: 1.25rem;
-    }
-
-    aside > p + p {
-        margin-top: 0.15rem;
     }
 
     .modal-button {
@@ -477,5 +471,20 @@ footer,
         width: 4rem;
         padding: 3rem;
         transition: 300ms ease-in-out;
+    }
+}
+
+@media (max-width: 376px) {
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        height: 100vh;
+    }
+
+    main {
+        gap: 0.25rem;
     }
 }
