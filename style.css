@@ -85,6 +85,7 @@ small {
     font-size: 0.9rem;
 }
 
+
 p + p {
     margin-top: 0.8rem;
 }
@@ -112,6 +113,14 @@ header, main, aside, footer, .page-wrapper, .instructions-wrapper {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+aside > p+p {
+    margin-top: 0;
+}
+
+aside p {
+    text-align: center;
 }
 
 .page-wrapper {
