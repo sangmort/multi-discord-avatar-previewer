@@ -123,10 +123,11 @@ body {
 header,
 main,
 aside,
-footer, .page-wrapper,
+footer,
+.page-wrapper,
 .instructions-wrapper,
-.theme-wrapper, #avatar-uploader-form
- {
+.theme-wrapper,
+#avatar-uploader-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,18 +136,16 @@ footer, .page-wrapper,
     gap: 1.5rem;
 }
 
-
 .page-wrapper {
     height: 100vh;
     margin: 0 calc(-50vw + 50%);
     max-width: none;
 }
 
-.theme-wrapper, #avatar-uploader-form {
+.theme-wrapper,
+#avatar-uploader-form {
     flex-direction: row;
-    gap: 0;
 }
-
 
 header {
     gap: 0;
@@ -169,8 +168,6 @@ input[type="file"] {
     display: none;
 }
 
-
-
 label {
     background: var(--blurple);
 }
@@ -179,6 +176,8 @@ button#remove-previews-button {
     background-color: var(--discord-black);
 }
 
+/* Buttons */
+/* Upload & reset Buttons */
 label,
 button#remove-previews-button {
     display: flex;
@@ -189,7 +188,6 @@ button#remove-previews-button {
     color: var(--avatar-bg-color-lt);
     border: var(--border-width) solid var(--blurple);
     border-radius: 2rem;
-    margin: 0.5rem;
     height: 40px;
     width: 124px;
     transition: 200ms ease-in;
@@ -290,7 +288,6 @@ button.remove-button:hover {
         ". . . . ."
         ". . . . .";
     border-radius: 0.5rem;
-    margin: 0.5rem 1rem;
     padding: 1rem 1.25rem;
 }
 
