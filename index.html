@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- <meta http-equiv="Content-Security-Policy" content="
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self';
         style-src 'self' 'unsafe-inline';
@@ -14,129 +15,153 @@
         base-uri 'self';
         form-action 'self';
         "> -->
-        <title>Multi Discord Avatar Previewer</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,900;1,600&display=swap"
-            rel="stylesheet" />
-        <script src="script.js"></script>
-    </head>
+    <title>Multi Discord Avatar Previewer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,900;1,600&display=swap"
+        rel="stylesheet" />
+    <script src="script.js"></script>
+</head>
 
-    <body>
-        <div class="page-wrapper">
-            <header>
-                <h1>Discord Avatar Previewer</h1>
-                <p class="tagline">Visualize multiple images as discord avatars</p>
-            </header>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <h1>Discord Avatar Previewer</h1>
+            <p class="tagline">Remove the toil of previewing images as discord
+                avatars one-by-one in the discord app.</p>
+        </header>
 
-            <main>
-                <div class="instructions-wrapper">
+        <main>
+            <div class="instructions-wrapper">
+                <p>Simply click the upload button and choose up to 10 images
+                    that you wish to preview as Discord avatars. </p>
+
+                <p>
+                    To remove a specific avatar preview, just click it, or hit
+                    the reset button to remove all previews at once.
+                </p>
+            </div>
+
+            <div class="theme-wrapper">
+                <div class="light-theme">
+                    <h2>Light Theme</h2>
+                    <div id="avatar-preview-light" class="avatar-container">
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                    </div>
+                </div>
+                <div class="dark-theme">
+                    <h2>Dark Theme</h2>
+                    <div id="avatar-preview-dark" class="avatar-container">
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                        <div class="avatar placeholder"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="avatar-uploader">
+                <form id="avatar-uploader-form">
+                    <div class="input-wrapper">
+                        <input type="file" id="user-avatar-input"
+                            accept=".jpg, .jpeg, .png, .gif" multiple />
+                        <label for="user-avatar-input"
+                            class="choose-avatars">Upload</label>
+                    </div>
+                    <button id="remove-previews-button">Reset</button>
+                </form>
+            </div>
+
+            <div class="note-wrapper">
+                <aside>
+                    <p>For best results, ensure your browser zoom is set to
+                        100%, and dark mode is off.</p>
+                    <p>Don't worry, this site is dark by default.</p>
+                </aside>
+            </div>
+
+            <div class="modal-button">
+                <button type="button" class="open-modal"
+                    data-open="modal-about">About</button>
+            </div>
+
+            <div id="modal-about" class="modal">
+                <div class="modal-wrapper">
+                    <header class="modal-header">
+                        <h2>About</h2>
+                        <button class="close-modal" aria-label="close modal"
+                            data-close>✕</button>
+                    </header>
                     <p>
-                        Remove the toil of previewing images as discord avatars one-by-one from the discord app. This
-                        site replicates the CSS used by the Discord App, allowing you to simultaneously preview multiple avatars on both Discord's light and dark themes.
+                        Augue taciti per nascetur quisque ornare rutrum cras
+                        montes a ridiculus! Eleifend enim donec
+                        lacus curae;. Rhoncus massa aenean duis? Porttitor
+                        integer erat ipsum adipiscing penatibus
+                        euismod lectus ornare. Mattis suspendisse semper
+                        interdum commodo montes vehicula litora
+                        ante montes pulvinar. Mattis sit conubia morbi vehicula
+                        vehicula?
                     </p>
                     <p>
-                        Simply click the upload button and choose up to 10 images that you wish to preview as Discord avatars. To remove a specific avatar preview, just click on it. To remove all previews at once, click the reset button.
+                        Platea dignissim placerat proin lacinia integer est nisl
+                        aptent quis. Aliquet a justo hac
+                        iaculis adipiscing orci, a magnis taciti dignissim per
+                        gravida. Odio porttitor nulla fames
+                        eu vehicula aenean non neque sagittis id metus odio.
+                        Turpis augue felis quam neque accumsan
+                        pretium pulvinar. Cras cursus metus nunc condimentum
+                        convallis, nisi sapien vulputate.
                     </p>
+                    <ul>
+                        <li>Placerat elit quisque dis senectus eleifend etiam
+                            turpis sociis varius.</li>
+                        <li>Dapibus pellentesque nisl phasellus sociis pretium
+                            lorem ridiculus vulputate nam.</li>
+                        <li>Cubilia conubia cras at per quis sodales nulla enim
+                            eleifend.</li>
+                    </ul>
+                    <p>
+                        Est malesuada auctor class ridiculus scelerisque
+                        sociosqu maecenas molestie. Urna himenaeos
+                        non integer eros leo consectetur nulla hendrerit nibh
+                        amet sodales. Eu quam luctus et
+                        commodo bibendum aenean suscipit et fringilla nec cras?
+                        Eu cum lorem condimentum cubilia
+                        purus hac amet. Felis massa mus phasellus facilisi vel
+                        montes quisque nulla praesent amet
+                        nisl.
+                    </p>
+                    <footer class="modal-footer">
+                        Check out the code on
+                        <a href="https://github.com/sangmort/multi-discord-avatar-previewer"
+                            target="_blank">github</a>.
+                    </footer>
                 </div>
-                <div class="avatar-uploader">
-                    <form id="avatar-uploader-form">
-                        <div class="input-wrapper">
-                            <input type="file" id="user-avatar-input" accept=".jpg, .jpeg, .png, .gif" multiple />
-                            <label for="user-avatar-input" class="choose-avatars">Upload</label>
-                        </div>
-                        <button id="remove-previews-button">Reset</button>
-                    </form>
-                </div>
-                <div class="theme-wrapper">
-                    <div class="light-theme">
-                        <h2>Light Theme</h2>
-                        <div id="avatar-preview-light" class="avatar-container">
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                        </div>
-                    </div>
-                    <div class="dark-theme">
-                        <h2>Dark Theme</h2>
-                        <div id="avatar-preview-dark" class="avatar-container">
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                            <div class="avatar placeholder"></div>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </main>
 
-                <div class="note-wrapper">
-                    <aside>
-                        <p>For best results, ensure your browser zoom is set to 100%, and dark mode is off.</p>
-                        <p>Don't worry, this site is dark by default.</p>
-                    </aside>
-                </div>
+        <footer>
+            <small>Made by <a href="https://github.com/sangmort"
+                    target="_blank">Osy</a> </small>
+        </footer>
+    </div>
+</body>
 
-                <div class="modal-button">
-                    <button type="button" class="open-modal" data-open="modal-about">About</button>
-                </div>
-
-                <div id="modal-about" class="modal">
-                    <div class="modal-wrapper">
-                        <header class="modal-header">
-                            <h2>About</h2>
-                            <button class="close-modal" aria-label="close modal" data-close>✕</button>
-                        </header>
-                        <p>
-                            Augue taciti per nascetur quisque ornare rutrum cras montes a ridiculus! Eleifend enim donec
-                            lacus curae;. Rhoncus massa aenean duis? Porttitor integer erat ipsum adipiscing penatibus
-                            euismod lectus ornare. Mattis suspendisse semper interdum commodo montes vehicula litora
-                            ante montes pulvinar. Mattis sit conubia morbi vehicula vehicula?
-                        </p>
-                        <p>
-                            Platea dignissim placerat proin lacinia integer est nisl aptent quis. Aliquet a justo hac
-                            iaculis adipiscing orci, a magnis taciti dignissim per gravida. Odio porttitor nulla fames
-                            eu vehicula aenean non neque sagittis id metus odio. Turpis augue felis quam neque accumsan
-                            pretium pulvinar. Cras cursus metus nunc condimentum convallis, nisi sapien vulputate.
-                        </p>
-                        <ul>
-                            <li>Placerat elit quisque dis senectus eleifend etiam turpis sociis varius.</li>
-                            <li>Dapibus pellentesque nisl phasellus sociis pretium lorem ridiculus vulputate nam.</li>
-                            <li>Cubilia conubia cras at per quis sodales nulla enim eleifend.</li>
-                        </ul>
-                        <p>
-                            Est malesuada auctor class ridiculus scelerisque sociosqu maecenas molestie. Urna himenaeos
-                            non integer eros leo consectetur nulla hendrerit nibh amet sodales. Eu quam luctus et
-                            commodo bibendum aenean suscipit et fringilla nec cras? Eu cum lorem condimentum cubilia
-                            purus hac amet. Felis massa mus phasellus facilisi vel montes quisque nulla praesent amet
-                            nisl.
-                        </p>
-                        <footer class="modal-footer">
-                            Check out the code on
-                            <a href="https://github.com/sangmort/multi-discord-avatar-previewer" target="_blank"
-                                >github</a
-                            >.
-                        </footer>
-                    </div>
-                </div>
-            </main>
-
-            <footer>
-                <small>Made by <a href="https://github.com/sangmort" target="_blank">Osy</a> </small>
-            </footer>
-        </div>
-    </body>
 </html>
