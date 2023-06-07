@@ -1,7 +1,7 @@
 /* Reset */
 html {
     box-sizing: border-box;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 body,
@@ -60,21 +60,21 @@ h6 {
 }
 
 h1 {
-    font-size: 1.65rem;
+    font-size: 1.5rem;
     margin-top: 0;
     margin-bottom: 0;
 }
 
 h2 {
-    font-size: 1.45rem;
-}
-
-h3 {
     font-size: 1.3rem;
 }
 
+h3 {
+    font-size: 1.2rem;
+}
+
 h4 {
-    font-size: 1.125rem;
+    font-size: 1.1rem;
 }
 
 h5 {
