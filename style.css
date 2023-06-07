@@ -121,26 +121,29 @@ body {
     line-height: 1.5rem;
     background-color: var(--discord-black);
     color: hsl(0, 0%, 97%);
-    padding: 1rem;
+
 }
 
 header,
 main,
 aside,
 footer,
-.page-wrapper,
 .instructions-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 625px;
 }
 
 .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     height: 93vh;
-    width: 500px;
-    margin: 0 auto;
+    margin: 0 calc(-50vw + 50%);
 }
 
 /* If adding a heading to this div, uncomment below */
@@ -393,6 +396,7 @@ button.open-modal:hover {
 /* Responsiveness for smaller screens */
 @media (max-width: 768px) {
     html {
+        font-size: 12px;
         overflow: hidden;
     }
 
@@ -403,13 +407,24 @@ button.open-modal:hover {
         padding: 0;
     }
 
+    header,
+main,
+aside,
+footer,
+.instructions-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 90vw;
+}
+
     .page-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
         gap: 0.25rem;
-        width: 94vw;
         height: 100vh;
     }
 
