@@ -1,7 +1,7 @@
 /* Reset */
 html {
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 body,
@@ -85,7 +85,6 @@ small {
     font-size: 0.9rem;
 }
 
-
 p + p {
     margin-top: 0.8rem;
 }
@@ -105,17 +104,21 @@ body {
     background-color: var(--discord-black);
     color: hsl(0, 0%, 97%);
     padding: 1rem;
-    
 }
 
-header, main, aside, footer, .page-wrapper, .instructions-wrapper {
+header,
+main,
+aside,
+footer,
+.page-wrapper,
+.instructions-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-aside > p+p {
+aside > p + p {
     margin-top: 0;
 }
 
@@ -134,7 +137,6 @@ aside p {
 /* div.instructions-wrapper :first-of-type {
     margin-top: 0;
 } */
-
 
 input[type="file"] {
     display: none;
@@ -175,7 +177,7 @@ label:hover,
 button#remove-previews-button:hover {
     color: #ffffff;
     border: var(--border-width) solid var(--blurple);
-    background: linear-gradient(180deg,#7289da 5%, var(--blurple));
+    background: linear-gradient(180deg, #7289da 5%, var(--blurple));
     cursor: pointer;
     transition: 250ms ease-in;
     transform: translate(0, -2px);
@@ -205,7 +207,6 @@ input[type="file"]:disabled + .choose-avatars {
     transition: none;
     transform: none;
     box-shadow: none;
-
 }
 
 button.remove-button {
@@ -293,6 +294,13 @@ button.remove-button:hover {
     border: none;
 }
 
+.modal-button {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 999;
+}
+
 button.open-modal {
     display: flex;
     justify-content: center;
@@ -308,7 +316,6 @@ button.open-modal {
     width: 3rem;
     padding: 2rem;
     transition: 300ms ease-in-out;
-
 }
 
 button.open-modal:hover {
@@ -373,17 +380,17 @@ button.open-modal:hover {
     margin-top: 0rem;
 }
 
-.modal-button {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 999;
-}
-
 /* Responsiveness for smaller screens */
 @media (max-width: 768px) {
+    html {
+        overflow: hidden;
+    }
+
     body {
-        padding: 0.25rem;
+        overflow: hidden;
+        position: relative;
+        margin: 0;
+        padding: 0;
     }
 
     .page-wrapper {
@@ -391,14 +398,51 @@ button.open-modal:hover {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        gap: .25rem;
-        width: 90vw;
-
+        gap: 0.25rem;
+        width: 94vw;
+        height: 100vh;
     }
-
 
     .theme-wrapper {
         flex: 0 1 50%;
         flex-wrap: wrap;
+    }
+
+    #avatar-uploader-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    label,
+    button#remove-previews-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        font-size: 1.25rem;
+        color: var(--avatar-bg-color-lt);
+        border: var(--border-width) solid var(--blurple);
+        border-radius: 2rem;
+        margin-top: 1rem;
+        height: 50px;
+        width: 158px;
+        transition: 200ms ease-in;
+    }
+
+    .modal-button {
+        position: fixed;
+        right: 0.65rem;
+        bottom: 0.65rem;
+        z-index: 999;
+    }
+
+    button.open-modal {
+        border-radius: 6rem;
+        margin: 0;
+        height: 4rem;
+        width: 4rem;
+        padding: 3rem;
+        transition: 300ms ease-in-out;
     }
 }
