@@ -107,49 +107,25 @@ body {
     
 }
 
-.page-wrapper {
+header, main, aside, footer, .page-wrapper, .instructions-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.page-wrapper {
     gap: 1rem;
     height: 93vh;
     width: 500px;
     margin: 0 auto;
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1rem;
-}
-
-.instructions-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-div.instructions-wrapper :first-of-type {
+/* If adding a heading to this div, uncomment below */
+/* div.instructions-wrapper :first-of-type {
     margin-top: 0;
-}
+} */
 
-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-items: center;
-}
 
 input[type="file"] {
     display: none;
