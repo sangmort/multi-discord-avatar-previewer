@@ -143,6 +143,8 @@ document.addEventListener("DOMContentLoaded", function () {
         alert(message);
     }
 
+    document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
+
     // Modal
     const openModal = document.querySelectorAll("[data-open]");
     const closeModal = document.querySelectorAll("[data-close]");
@@ -174,5 +176,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    document.getElementById("remove-previews-button").addEventListener("click", removeAllAvatarPreviews);
+// Prevent Scrolling
+window.addEventListener("scroll", preventMotion, false);
+window.addEventListener("touchmove", preventMotion, false);
+
+function preventMotion(event)
+{
+    window.scrollTo(0, 0);
+    event.preventDefault();
+    event.stopPropagation();
+}
+
 });
