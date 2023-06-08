@@ -89,7 +89,7 @@ p + p {
 }
 
 p {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 p.tagline {
@@ -118,6 +118,7 @@ body {
     line-height: 1.5rem;
     background-color: var(--discord-black);
     color: hsl(0, 0%, 97%);
+    overflow-x: hidden;
 }
 
 header,
@@ -147,6 +148,13 @@ footer,
     flex-direction: row;
 }
 
+.modal-button {
+    position: fixed;
+    right: calc(-50vw + 50%);
+    bottom: calc(-50vh + 50%);
+    z-index: 999;
+}
+
 header {
     gap: 0;
 }
@@ -159,11 +167,7 @@ aside {
     gap: 0;
 }
 
-/* If adding a heading to this div, uncomment below */
-/* div.instructions-wrapper :first-of-type {
-    margin-top: 0;
-} */
-
+/* Hide input field to use label as button */
 input[type="file"] {
     display: none;
 }
@@ -176,7 +180,7 @@ button#remove-previews-button {
     background-color: var(--discord-black);
 }
 
-/* Buttons */
+/* // Buttons */
 /* Upload & reset Buttons */
 label,
 button#remove-previews-button {
@@ -188,13 +192,15 @@ button#remove-previews-button {
     color: var(--avatar-bg-color-lt);
     border: var(--border-width) solid var(--blurple);
     border-radius: 2rem;
-    height: 40px;
-    width: 124px;
+    height: 50px;
+    width: 160px;
     transition: 200ms ease-in;
 }
 
 label:hover,
-button#remove-previews-button:hover {
+button#remove-previews-button:hover,
+label:focus,
+button#remove-previews-button:focus {
     color: #ffffff;
     border: var(--border-width) solid var(--blurple);
     background: linear-gradient(180deg, #7289da 5%, var(--blurple));
@@ -202,6 +208,12 @@ button#remove-previews-button:hover {
     transition: 250ms ease-in;
     transform: translate(0, -2px);
     box-shadow: hsl(223, 100%, 5%) 0px 8px 15px, hsl(226, 100%, 17%) 0px 20px 30px;
+}
+
+label:active,
+button#remove-previews-button:active {
+    box-shadow: hsl(223, 100%, 5%) 0px 8px 15px, hsl(226, 100%, 17%) 0px 20px 30px,
+        hsl(226, 100%, 17%) 0px 2px 10px inset;
 }
 
 .input-wrapper {
@@ -229,6 +241,7 @@ input[type="file"]:disabled + .choose-avatars {
     box-shadow: none;
 }
 
+/* Remove buttons for individual avatars */
 button.remove-button {
     display: block;
     position: relative;
@@ -237,12 +250,10 @@ button.remove-button {
     width: 40px;
     height: 40px;
     border-radius: 20px;
-
     background-color: transparent;
     border: none;
     color: transparent;
-    font-weight: bold;
-    transition: 300ms ease-in-out;
+    transition: 200ms ease-in;
 }
 
 button.remove-button:hover {
@@ -250,47 +261,42 @@ button.remove-button:hover {
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    font-size: 0.45rem;
-    letter-spacing: 0.025rem;
+    font-size: 0.5rem;
+    letter-spacing: 0.01rem;
     text-transform: uppercase;
-    border-radius: 20px;
     background-color: hsla(0, 0%, 0%, 0.8);
-    border: none;
     color: #fff;
-    font-weight: bold;
     cursor: pointer;
+    transition: 200ms ease-in;
+}
+
+/* Modal Button */
+button.open-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    color: var(--avatar-bg-color-lt);
+    border: var(--border-width) solid var(--blurple);
+    border-radius: 0.5rem 0.5rem 0 0;
+    background: var(--blurple);
+    height: 6rem;
+    width: 6rem;
+    padding: 2rem;
     transition: 300ms ease-in-out;
 }
 
-#avatar-preview-light {
-    background-color: var(--avatar-bg-color-lt);
-    border: var(--border-width) solid var(--blurple);
+button.open-modal:hover {
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+    transform: translate(0, -2px);
+    box-shadow: hsla(235, 100%, 50%, 0.718) 0px 0px 9px;
+    background-color: var(--discord-black);
+    border-color: hsla(235, 94%, 36%, 0.718);
 }
 
-#avatar-preview-dark {
-    background-color: var(--avatar-bg-color-dk);
-    border: var(--border-width) solid var(--blurple);
-}
-
-.avatar-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.1rem 0.1rem;
-    grid-auto-flow: row;
-    justify-content: space-evenly;
-    align-content: space-evenly;
-    justify-items: center;
-    align-items: center;
-    grid-template-areas:
-        ". . . . ."
-        ". . . . .";
-    border-radius: 0.5rem;
-    padding: 1rem 1.25rem;
-}
-
+/* Avatar Previews */
 .avatar {
     margin: 5px;
     width: 40px;
@@ -307,41 +313,36 @@ button.remove-button:hover {
     border: none;
 }
 
-.modal-button {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 999;
+/* Avatar Containers */
+#avatar-preview-light {
+    background-color: var(--avatar-bg-color-lt);
 }
 
-button.open-modal {
-    display: flex;
-    justify-content: center;
+#avatar-preview-dark {
+    background-color: var(--avatar-bg-color-dk);
+}
+
+.avatar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    grid-auto-flow: row;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    justify-items: center;
     align-items: center;
-    box-sizing: border-box;
-    font-size: 1rem;
-    color: var(--avatar-bg-color-lt);
+    margin-top: 0.5rem;
+    grid-template-areas:
+        ". . . . ."
+        ". . . . .";
+    border-radius: 0.5rem;
     border: var(--border-width) solid var(--blurple);
-    border-radius: 6rem;
-    background: #23272a;
-    margin: 0.5rem;
-    height: 3rem;
-    width: 3rem;
-    padding: 2rem;
-    transition: 300ms ease-in-out;
+    padding: 1.5rem 1.5rem;
 }
 
-button.open-modal:hover {
-    cursor: pointer;
-    transition: 300ms ease-in-out;
-    transform: translate(0, -2px);
-    box-shadow: hsla(235, 100%, 50%, 0.718) 0px 0px 9px;
-    background-color: hsla(235, 94%, 36%, 0.718);
-    border-color: hsla(235, 94%, 36%, 0.718);
-}
 
 /* Modal */
-
 .modal {
     position: fixed;
     top: 0;
@@ -396,7 +397,6 @@ button.open-modal:hover {
 /* Responsiveness for small screens */
 @media (max-width: 768px) {
     html {
-        font-size: 12px;
         overflow: hidden;
     }
 
@@ -418,6 +418,11 @@ button.open-modal:hover {
         gap: 1.5rem;
     }
 
+    header,
+    aside {
+        gap: 0.25rem;
+    }
+
     .page-wrapper {
         height: 100vh;
         margin: 0 calc(-50vw + 50%);
@@ -428,28 +433,9 @@ button.open-modal:hover {
         flex-direction: row;
     }
 
-    header {
-        gap: 0;
-    }
-
-    main {
-        min-height: 60vh;
-    }
-
-    aside {
-        gap: 0;
-    }
-
     .theme-wrapper {
         flex: 0 1 50%;
         flex-wrap: wrap;
-    }
-
-    label,
-    button#remove-previews-button {
-        height: 50px;
-        width: 158px;
-        transition: 200ms ease-in;
     }
 
     .modal-button {
@@ -461,7 +447,6 @@ button.open-modal:hover {
 
     button.open-modal {
         border-radius: 6rem;
-        margin: 0;
         height: 4rem;
         width: 4rem;
         padding: 3rem;
@@ -469,17 +454,43 @@ button.open-modal:hover {
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 390px) {
+    html {
+        font-size: 15px;
+    }
+
+    body {
+        overflow-x: hidden;
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
     .page-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        height: 100vh;
+        gap: 0.5rem;
+        height: 100%;
     }
 
     main {
-        gap: 0.25rem;
+        gap: 0.5rem;
+    }
+
+    .avatar-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0rem;
+        grid-auto-flow: row;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        justify-items: center;
+        align-items: center;
+        margin-top: 0.25rem;
+        grid-template-areas:
+            ". . . . ."
+            ". . . . .";
+        border-radius: 0.5rem;
+        border: var(--border-width) solid var(--blurple);
+        padding: 0.5rem 0.75rem;
     }
 }
