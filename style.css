@@ -156,14 +156,13 @@ button#remove-previews-button {
 .navigation-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     position: fixed;
-    bottom: 0;
     background-color: aqua;
-    z-index: 999;
-    width: 100%;
-    max-width: 675px;
-    border-radius: 1rem 1rem 0 0;
+    margin: 0 calc(-50vw + 50%);
+    bottom: calc(-48vh + 50%);
+    border-radius: 1rem;
+    width: 275px;
 }
 
 header {
@@ -176,6 +175,47 @@ main {
 
 aside {
     gap: 0;
+}
+
+/* Avatar Previews */
+.avatar {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-clip: padding-box;
+    background-position: 50% 50%;
+}
+
+.placeholder {
+    background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
+    background-color: var(--avatar-border-color-dk);
+    border: none;
+}
+
+/* Avatar Containers */
+#avatar-preview-light {
+    background-color: var(--avatar-bg-color-lt);
+}
+
+#avatar-preview-dark {
+    background-color: var(--avatar-bg-color-dk);
+}
+
+.avatar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    grid-auto-flow: row;
+    margin-top: 0.5rem;
+    grid-template-areas:
+        ". . . . ."
+        ". . . . .";
+    border-radius: 0.5rem;
+    border: var(--border-width) solid var(--blurple);
+    padding: 1.5rem 1.5rem;
 }
 
 /* Hide input field to use label as button */
@@ -291,65 +331,34 @@ button.open-modal {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     color: var(--avatar-bg-color-lt);
     border: var(--border-width) solid var(--blurple);
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: 0.5rem;
     background: var(--blurple);
-    height: 6rem;
-    width: 6rem;
-    padding: 2rem;
+    height: 2rem;
+    width: 4rem;
+    padding: .5rem;
     transition: 300ms ease-in-out;
+    margin: .25rem;
 }
 
 button.open-modal:hover {
     cursor: pointer;
     transition: 300ms ease-in-out;
-    transform: translate(0, -2px);
+    transform: translate(0, -4px);
     box-shadow: hsla(235, 100%, 50%, 0.718) 0px 0px 9px;
     background-color: var(--discord-black);
     border-color: hsla(235, 94%, 36%, 0.718);
 }
 
-/* Avatar Previews */
-.avatar {
-    margin: 5px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-size: cover;
-    background-clip: padding-box;
-    background-position: 50% 50%;
-}
-
-.placeholder {
-    background-image: url(https://cdn.discordapp.com/embed/avatars/1.png);
-    background-color: var(--avatar-border-color-dk);
-    border: none;
-}
-
-/* Avatar Containers */
-#avatar-preview-light {
-    background-color: var(--avatar-bg-color-lt);
-}
-
-#avatar-preview-dark {
-    background-color: var(--avatar-bg-color-dk);
-}
-
-.avatar-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.5rem;
-    grid-auto-flow: row;
-    margin-top: 0.5rem;
-    grid-template-areas:
-        ". . . . ."
-        ". . . . .";
-    border-radius: 0.5rem;
+button.close-modal {
+    color: var(--avatar-bg-color-lt);
     border: var(--border-width) solid var(--blurple);
-    padding: 1.5rem 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--blurple);
+    transition: 300ms ease-in-out;
+
 }
 
 /* Modal */
@@ -362,7 +371,7 @@ button.open-modal:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .5rem;
+    padding: 0.5rem;
     cursor: pointer;
     background-color: var(--modal-outer-bg-color);
     visibility: hidden;
@@ -378,11 +387,13 @@ button.open-modal:hover {
 .modal-wrapper {
     position: relative;
     max-width: 90vw;
-    max-height: 80vh;
+    height: 80vh;
     border-radius: 5px;
     background-color: var(--blurple);
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     cursor: default;
+    padding: 1rem 1.25rem
 }
 
 .modal-header {
@@ -394,7 +405,7 @@ button.open-modal:hover {
 }
 
 .modal-header .close-modal {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .modal-wrapper > * + * {
@@ -453,20 +464,6 @@ button.open-modal:hover {
         width: calc(90vw - 3.5rem);
     }
 
-    .modal-button {
-        position: fixed;
-        right: 0.65rem;
-        bottom: 0.65rem;
-        z-index: 999;
-    }
-
-    button.open-modal {
-        border-radius: 6rem;
-        height: 4rem;
-        width: 4rem;
-        padding: 3rem;
-        transition: 300ms ease-in-out;
-    }
 }
 
 @media (max-width: 380px) {
