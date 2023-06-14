@@ -116,7 +116,7 @@ body {
     font-family: "Noto Sans Display", sans-serif;
     font-weight: 400;
     line-height: 1.5rem;
-    background-color: var(--discord-black);
+    background-color: var(--blurple);
     color: hsl(0, 0%, 97%);
     overflow-x: hidden;
 }
@@ -125,7 +125,7 @@ header,
 main,
 aside,
 footer,
-.page-wrapper,
+.page-wrapper,.page-wrapper-inner,
 .instructions-wrapper,
 .theme-wrapper,
 #avatar-uploader-form {
@@ -141,6 +141,14 @@ footer,
     height: 100vh;
     margin: 0 calc(-50vw + 50%);
     max-width: none;
+}
+
+.page-wrapper-inner {
+    background-color: var(--discord-black);
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 70vw;
+    width: 58vw;
 }
 
 .theme-wrapper,
