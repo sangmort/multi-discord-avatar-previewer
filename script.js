@@ -40,6 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             reader.readAsDataURL(file);
         });
+
+        // hide instructions wrapper when files are uploaded
+        document.querySelector(".instructions-wrapper").style.display = "none";
+
         // show avatar theme wrapper & reset button when files are uploaded
         document.querySelector(".theme-wrapper").style.display = "flex";
         document.getElementById("remove-previews-button").style.display = "flex";
