@@ -41,7 +41,7 @@ img {
     --avatar-border-color-dk: hsl(231, 5%, 53%);
     --avatar-bg-color-lt: hsl(0, 0%, 100%);
     --avatar-bg-color-dk: hsl(222, 6%, 20%);
-    --modal-outer-bg-color: hsla(220, 6%, 20%, 0.6);
+    --modal-outer-bg-color: hsl(0, 0%, 14%, 0.9);
 }
 
 /* Fonts */
