@@ -143,6 +143,10 @@ footer,
     max-width: none;
 }
 
+.theme-wrapper, button#remove-previews-button {
+    display: none;
+}
+
 .theme-wrapper,
 #avatar-uploader-form {
     flex-direction: row;
@@ -182,9 +186,13 @@ button#remove-previews-button {
 
 /* // Buttons */
 /* Upload & reset Buttons */
+
+label {
+    display: flex;
+}
+
 label,
 button#remove-previews-button {
-    display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;

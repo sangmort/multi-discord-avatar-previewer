@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             reader.readAsDataURL(file);
         });
+        // hide avatar theme wrapper until files are actually uploaded
+        document.querySelector(".theme-wrapper").style.display = "flex";
+        document.getElementById("remove-previews-button").style.display ="flex";
     }
 
     function removePlaceholder(placeholder) {
@@ -176,15 +179,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-// Prevent Scrolling
-window.addEventListener("scroll", preventMotion, false);
-window.addEventListener("touchmove", preventMotion, false);
+    // Prevent Scrolling
+    window.addEventListener("scroll", preventMotion, false);
+    window.addEventListener("touchmove", preventMotion, false);
 
-function preventMotion(event)
-{
-    window.scrollTo(0, 0);
-    event.preventDefault();
-    event.stopPropagation();
-}
-
+    function preventMotion(event) {
+        window.scrollTo(0, 0);
+        event.preventDefault();
+        event.stopPropagation();
+    }
 });
