@@ -117,6 +117,11 @@ body {
     font-weight: 400;
     line-height: 1.5rem;
     background-color: var(--blurple);
+    background-image: url(large_KwMcnXe9_2x.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: hsl(0, 0%, 97%);
     overflow-x: hidden;
 }
@@ -125,7 +130,8 @@ header,
 main,
 aside,
 footer,
-.page-wrapper,.page-wrapper-inner,
+.page-wrapper,
+.page-wrapper-inner,
 .instructions-wrapper,
 .theme-wrapper,
 #avatar-uploader-form {
@@ -178,7 +184,8 @@ header {
 }
 
 main {
-    min-height: 30vh;
+    min-height: 335px;
+    justify-content: space-around;
 }
 
 aside {
@@ -346,9 +353,9 @@ button.open-modal {
     background: var(--blurple);
     height: 2rem;
     width: 4rem;
-    padding: .5rem;
+    padding: 0.5rem;
     transition: 300ms ease-in-out;
-    margin: .25rem;
+    margin: 0.25rem;
 }
 
 button.open-modal:hover {
@@ -366,7 +373,6 @@ button.close-modal {
     border-radius: 0.5rem;
     background: var(--blurple);
     transition: 300ms ease-in-out;
-
 }
 
 /* Modal */
@@ -401,7 +407,7 @@ button.close-modal {
     overflow-x: hidden;
     overflow-y: auto;
     cursor: default;
-    padding: 1rem 1.25rem
+    padding: 1rem 1.25rem;
 }
 
 .modal-header {
@@ -471,7 +477,6 @@ button.close-modal {
     .avatar-container {
         width: calc(90vw - 3.5rem);
     }
-
 }
 
 @media (max-width: 380px) {
